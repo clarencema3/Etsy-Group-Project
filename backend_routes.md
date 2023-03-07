@@ -49,17 +49,64 @@ correct role(s) or permission(s).
   * `GET /api/session`
 
 
-## FauxComments
+## Products
 
-* A logged in user may delete one of their own FauxComments, removing it from the list of visible FauxComments without causing a refresh/redirect.
 
-  * `DELETE /api/fauxcomments/:id`
+### Get all Products
 
-## FauxLikes
+* Returns information about all of the products
+* Require Authentication: false
 
-* A logged in user can FauxLike or FauxUnlike a FauxTweet or FauxComment with visible confirmation without causing a refresh/redirect.
-  
-  * `POST /api/fauxtweets/:id/likes`
-  * `POST /api/fauxcomments/:id/likes`
-  * `DELETE /api/fauxtweets/:id/likes`
-  * `DELETE /api/fauxcomments/:id/likes`
+  * `GET /api/products`
+
+
+### Get all Products owned by the Current User
+
+* Returns information about all of the products owned by the current user
+* Require Authentication: true
+
+  * `GET /api/products/current`
+
+
+### Get details of a Product from an id
+
+* Returns the details of a product specified by its id.
+* Require Authentication: false
+
+  * `GET /api/products/:productId`
+
+
+### Add a Product
+
+* Creates and returns a new product
+* Require Authentication: true
+
+  * `POST /api/products`
+
+
+### Add an Image to a Product based on the Product's id
+
+* Create and return a new image for a product specified by id
+* Require Authentication: true
+
+  * `POST /api/products/:productId/images`
+
+
+### Edit a Product
+
+* Updates and returns an existing product
+* Require Authentication: true
+
+  * `PUT /api/products/:productId`
+
+
+### Delete a Product
+
+* Deletes an existing product
+* Require Authentication: true
+
+  * `DELETE /api/products/:productId`
+
+
+
+

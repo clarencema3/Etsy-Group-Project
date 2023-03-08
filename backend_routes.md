@@ -108,5 +108,82 @@ correct role(s) or permission(s).
   * `DELETE /api/products/:productId`
 
 
+## Shopping Cart
+
+### Get all products in the user's shopping cart
+
+* Returns all products in the current user's shopping cart
+* Require Authentication: true
+
+  * `GET /api/current/cart`
+
+
+### Add a product to user's shopping cart
+
+* Add and return a product to the user's shopping cart
+* Require Authentication: true
+
+  * `POST /api/current/cart`
+
+
+### Edit a product in the user's shopping cart
+
+* Update and return an existing product in the user's shopping cart
+* Require Authentication: true
+
+  * `PUT /api/current/cart/:productId`
+
+
+### Delete cart item
+
+* Removes a product from the user's shopping cart
+* Require Authentication: true
+
+  * `DELETE /api/current/cart/:productId`
+
+
+## Reviews
+
+### Get all Reviews of the Current User
+
+* Returns all of the reviews written by the current user
+* Require Authentication: true
+
+  * `GET /api/reviews/current`
+
+
+### Get all Reviews by a Product's id
+
+* Returns all the reviews that belong to a product specified by id.
+* Require Authentication: false
+
+  * `GET /api/products/:productId/reviews`
+
+
+### Create a Review for a Product based on the Product's id
+
+* Create and return a new review for a product specified by id.
+* Require Authentication: true
+
+  * `POST /api/products/:productId/reviews`
+
+
+### Edit a Review
+
+* Update and return an existing review.
+* Require Authentication: true
+
+  * `PUT /api/reviews/:reviewId`
+
+
+### Delete a Review
+
+* Delete an existing review.
+* Require Authentication: true
+
+  * `DELETE /api/reviews/:reviewId`
+
+
+
 
 

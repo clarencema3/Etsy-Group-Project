@@ -34,24 +34,36 @@ Etsy clone is a website for users to purchase and sell products to other users.
 * to the right of item cards: How you'll pay with options as check boxes, item(s) total price, total discounts, subtotal, proceed to checkout
 * If not logged in: Modal pops up when proceed to checkout button clicked to continue as guest or signup
 
-## 3. Comments/Reviews
+## 3. Reviews
 
-* Logged in users can post/edit/delete their own comments.
-* Owner of product can reply to comments.
-* All (logged/not logged in) users can view comments.
+* Logged in users can post reviews on products they do not own.
+* All (logged/not logged in) users can view reviews.
 
-## 4. Search
+* To-do:
+    
+    * Users will be able to edit their reviews on products
+    * Users will be able to delete their reviews on products.
+
+
+## 4. Orders
+
+* Logged in users can make purchases for items in their shopping cart.
+* Logged in users will be able to view items they have purchased.
+
+## Future features:
+
+### 5. Search 
 
 * All (logged/not logged in) users can search items.
 * Searching brings up a product listing page whos names or category include search criteria
 
 
-## 5. Bonus Categories
+### 6. Categories 
 
 * Separates product listing into categories based on item type/category
 
 
-## 6. Bonus Favorites
+### 7. Bonus Favorites 
 
 * Logged in user can favorite an item by click heart in top right corner, if favorited heart is filled with red
 * If not logged in must sign in or sign up using modal

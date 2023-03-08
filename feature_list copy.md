@@ -36,7 +36,7 @@ Etsy clone is a website for users to purchase and sell products to other users.
 
 ## 3. Reviews
 
-* Logged in users can post reviews on products they do not own.
+* Logged in users can post reviews on products if they are not the owner/seller of the product.
 * All (logged/not logged in) users can view reviews.
 
 * To-do:

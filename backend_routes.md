@@ -168,7 +168,7 @@ correct role(s) or permission(s).
   * `POST /api/products/:productId/reviews`
 
 
-### Edit a Review
+### Edit a Review (Future Feature)
 
 * Update and return an existing review.
 * Require Authentication: true
@@ -176,12 +176,29 @@ correct role(s) or permission(s).
   * `PUT /api/reviews/:reviewId`
 
 
-### Delete a Review
+### Delete a Review (Future Feature)
 
 * Delete an existing review.
 * Require Authentication: true
 
   * `DELETE /api/reviews/:reviewId`
+
+
+## Orders
+
+### Add cart items to orders
+
+* Create and return products purchased by user
+* Require Authentication: true
+
+  * `POST /api/orders`
+
+### Get the current user's orders by id
+
+* Returns all of the orders belonging to the user specified by id
+* Require Authentication: true
+
+  * `GET /api/orders`
 
 
 

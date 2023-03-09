@@ -129,7 +129,7 @@
 * As a logged in user, I want to be able to click manage orders in nav profile dropdown.
   * When I'm on the `/products/current` page:
     * I can view all products that I have listed for sale
-    * Each card shows a picture, product name and price
+    * Each card shows a picture, product name, quantity and price
     * I can click "edit" to edit details of an item
     * I can click "delete" to delete an item
 

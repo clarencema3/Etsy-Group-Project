@@ -48,6 +48,19 @@ correct role(s) or permission(s).
 
   * `GET /api/session`
 
+### Log in a User
+
+* Logs in a user with valid credentials and returns the current user's information
+* Require Authentication: true
+
+  * `POST /api/session`
+
+### Sign up a user
+
+* Creates a new user, logs them in as the current user, and returns the current user's information
+* Require Authentication: false
+
+  * `POST /api/users`
 
 ## Products
 

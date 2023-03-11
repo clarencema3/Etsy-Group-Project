@@ -26,3 +26,5 @@ class CartItem(db.Model):
             'product_id': self.product_id,
             'quantity': self.quantity
         }
+
+

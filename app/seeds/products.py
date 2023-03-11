@@ -62,6 +62,6 @@ def seed_products():
     db.session.commit()
 
 
-def undo_purchases():
+def undo_products():
     db.session.execute(text("DELETE FROM products"))
     db.session.commit()

@@ -6,6 +6,13 @@ from flask_login import current_user, login_user, logout_user, login_required
 
 products_routes = Blueprint('products', __name__)
 
+
+@products_routes.route('/')
+def get_all_products():
+    products = Product.query.all()
+    return [product.to_dict() for product in products]
+
+    
 @products_routes.route("/<int:id>")
 def get_single_product(id):
     product = Product.query.get(id)

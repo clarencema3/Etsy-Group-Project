@@ -11,9 +11,9 @@ class CartItem(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     product_id = db.Column(db.Integer, db.ForeignKey(
-        "products.id"), nullable=False)
+        "products.id"), cascade="all, delete-orphan", nullable=False)
     quantity = db.Column(
-        db.Integer, cascade="all, delete-orphan", nullable=False)
+        db.Integer, nullable=False)
 
     # relationships
     user = db.relationship("User", back_populates="cart_items")
@@ -26,3 +26,5 @@ class CartItem(db.Model):
             'product_id': self.product_id,
             'quantity': self.quantity
         }
+
+

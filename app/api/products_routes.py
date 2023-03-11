@@ -11,3 +11,11 @@ products_routes = Blueprint('products', __name__)
 def get_all_products():
     products = Product.query.all()
     return [product.to_dict() for product in products]
+
+    
+@products_routes.route("/<int:id>")
+def get_single_product(id):
+    product = Product.query.get(id)
+    print("product", product)
+    print("product.to_dict()", product.to_dict())
+    return product.to_dict()

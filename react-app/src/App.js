@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import AllProducts from "./components/AllProducts"
 import SingleProduct from "./components/SingleProduct";
+import NewProductForm from "./components/NewProductForm";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -29,7 +30,10 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/products/:id">
+          <Route path="/products/new">
+            <NewProductForm />
+          </Route>
+          <Route path="/products/:productId">
             <SingleProduct />
           </Route>
         </Switch>

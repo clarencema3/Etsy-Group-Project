@@ -16,6 +16,14 @@ def get_all_products():
 @products_routes.route("/<int:id>")
 def get_single_product(id):
     product = Product.query.get(id)
-    print("product", product)
-    print("product.to_dict()", product.to_dict())
-    return product.to_dict()
+    productDictionary = product.to_dict()
+    productDictionary['user'] = product.user.to_dict()
+    print('type of users ',type(product.user))
+    print('type of reviews', type(product.reviews))
+    return productDictionary
+
+
+@products_routes.route("/new")
+def create_new_product():
+    
+    pass

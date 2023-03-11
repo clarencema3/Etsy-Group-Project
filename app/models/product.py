@@ -20,6 +20,7 @@ class Product(db.Model):
     cart = db.relationship("CartItem", back_populates="products", cascade="all, delete-orphan")
     reviews = db.relationship("Review", back_populates="product")
     purchase = db.relationship("Purchase", back_populates="products")
+    user = db.relationship("User", back_populates="products")
 
     def to_dict(self):
         return {
@@ -29,5 +30,5 @@ class Product(db.Model):
             'price': self.price,
             'seller_id': self.seller_id,
             'stock': self.stock,
-            'preview_img': self.preview_img
+            'preview_img': self.preview_img,
         }

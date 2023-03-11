@@ -8,7 +8,7 @@ def seed_purchases():
         product_id=1,
         quantity=10,
         order_id=1,
-        price_at_purchase=99.99
+        total_price=99.99
     )
 
     db.session.add(

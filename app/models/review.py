@@ -9,12 +9,12 @@ class Review(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     product_id = db.Column(db.Integer, db.ForeignKey(
-        "products.id"), nullable=False)
+        add_prefix_for_prod("products.id")), nullable=False)
 
     rating = db.Column(db.Integer, nullable=False)
-    comment = db.Column(db.String(1000), nullable=False)
+    review = db.Column(db.String(1000), nullable=False)
     timestamp = db.Column(db.DateTime, nullable=False)
 
     # relationships
@@ -27,6 +27,6 @@ class Review(db.Model):
             'user_id': self.user_id,
             'product_id': self.product_id,
             'rating': self.rating,
-            'comment': self.comment,
+            'review': self.review,
             'timestamp': self.timestamp,
         }

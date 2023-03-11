@@ -12,7 +12,7 @@ class Product(db.Model):
     description = db.Column(db.String(1000), nullable=False)
     price = db.Column(db.Float, nullable=False)
     seller_id = db.Column(
-        db.Integer, db.ForeignKey("users.id"), nullable=False)
+        db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     stock = db.Column(db.Integer, nullable=False)
     preview_img = db.Column(db.String(1000), nullable=False)
 

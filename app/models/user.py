@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
 
     # relationships
     cart_items = db.relationship("CartItem", back_populates="user")
-    purchases = db.relationship("Purchase", back_populates="purchases")
+    purchases = db.relationship("Purchase", back_populates="user")
     reviews = db.relationship("Review", back_populates="user")
 
     @property

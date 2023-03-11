@@ -11,7 +11,7 @@ class CartItem(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     product_id = db.Column(db.Integer, db.ForeignKey(
-        "products.id"), cascade="all, delete-orphan", nullable=False)
+        "products.id"), nullable=False)
     quantity = db.Column(
         db.Integer, nullable=False)
 
@@ -26,5 +26,3 @@ class CartItem(db.Model):
             'product_id': self.product_id,
             'quantity': self.quantity
         }
-
-

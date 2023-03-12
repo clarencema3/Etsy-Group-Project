@@ -16,7 +16,6 @@
 .nav-buttons {
   display: flex;
   width: 200px;
-  /* border: 1px solid black; */
   justify-content: center;
   align-items: center;
 }
@@ -83,3 +82,92 @@ div[class*="nav-buttons-"] {
 }
 
 /* profile dropdown CSS -------------------------------------------- */
+
+.profile-dropdown-container {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  height: 110px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 1px;
+}
+
+.profile-dropdown-div {
+  height: 110px;
+}
+
+.profile-dropdown-user {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  width: 100px;
+  padding: 2px 0px;
+  border-radius: 5px;
+}
+
+.profile-dropdown-user:hover {
+  background-color: lightgray;
+}
+
+.profile-dropdown-name {
+  margin: 3px 0px 0px 7px;
+}
+
+.profile-dropdown-purchases {
+  padding: 4px 0px 0px 0px;
+  width: 100px;
+  height: 33px;
+  border-radius: 5px;
+}
+
+.profile-dropdown-purchases:hover {
+  background-color: lightgray;
+}
+
+.fa-clipboard-list {
+  height: 33px;
+  width: 20px;
+  padding: 4px 4px;
+}
+
+.profile-dropdown-logout {
+  width: 100px;
+  height: 33px;
+  padding-top: 5px;
+  border-radius: 5px;
+}
+
+.profile-dropdown-logout:hover {
+  background-color: lightgray;
+}
+
+.fa-sign-out-alt {
+  height: 20px;
+  width: 20px;
+  padding: 0px 4px;
+}
+
+/* profile logout signup CSS -------------------------------------------- */
+
+.profile-logsign-div {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.login-sign-btn {
+  border: none;
+  background-color: transparent;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 8px 8px;
+}
+
+.login-sign-btn:hover {
+  background-color: lightgray;
+}

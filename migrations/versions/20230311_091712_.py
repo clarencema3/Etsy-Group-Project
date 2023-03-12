@@ -36,6 +36,8 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE products SET SCHEMA {SCHEMA};")
 
+    
+
     op.create_table('cart_items',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -48,6 +50,7 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE cart_items SET SCHEMA {SCHEMA};")
+
 
     op.create_table('purchases',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -63,6 +66,7 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE purchases SET SCHEMA {SCHEMA};")
+
 
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),

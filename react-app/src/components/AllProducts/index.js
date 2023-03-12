@@ -36,7 +36,6 @@ const ShowAllProducts = () => {
     console.log("Products array from products:", productsArr)
     return productsArr && products && (
         <div className="allProductsContainer">
-
             {userLoggedIn()}
             <div className="imageContainer">
                 {productsArr?.map((product) => (
@@ -46,17 +45,21 @@ const ShowAllProducts = () => {
                             <div className="productPrice">${Number(product.price).toFixed(2)}</div>
                         </NavLink>
                     </div>
-
                 ))}
             </div>
             <div className="whatIsEtsyContainer">
-
-
+                Support independent creators
+            </div>
+            <div>
+                There’s no Etsy warehouse – just millions of people selling the things they love. We make the whole process easy, helping you connect directly with makers to find something extraordinary.
+            </div>
+            <div>
+                Have a question? Well, we’ve got some answers.
+                <button onClick={() => alert('Feature Coming Soon...')}>Go to Help Center</button>
                 <h2>
                     What is Etsy?
                 </h2>
                 <h3>
-
                     Support independent creators
                 </h3>
                 <p>
@@ -72,7 +75,6 @@ const ShowAllProducts = () => {
                 </div>
             </div>
         </div>
-
     )
 }
 

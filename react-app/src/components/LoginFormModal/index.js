@@ -27,36 +27,52 @@ function LoginFormModal() {
   }
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-        <button onClick={handleDemoClick}>Demo User</button>
-      </form>
-    </>
+    <div className="login-form-container">
+      <div className="login-form-div">
+        <div className="login-form-header">Log In</div>
+        <form onSubmit={handleSubmit} className="login-form-form">
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+          <div className="login-form-section-div">
+            <label>
+              <div>
+                Email Address
+              </div>
+              <input
+                type="text"
+                value={email}
+                className="login-form-input"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className="login-form-section-div">
+            <label>
+              <div>
+                Password
+              </div>
+              <input
+                type="password"
+                value={password}
+                className="login-form-input"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className="login-form-section-div">
+            <button className="login-form-buttons-login" type="submit">Log In</button>
+          </div>
+          <div className="login-form-section-div">
+            <button className="login-form-buttons-demo" onClick={handleDemoClick}>Demo User</button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 

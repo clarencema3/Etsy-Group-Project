@@ -1,4 +1,4 @@
-from app.models.cart_item import db, CartItem
+from app.models import db, CartItem, SCHEMA
 from sqlalchemy.sql import text
 
 

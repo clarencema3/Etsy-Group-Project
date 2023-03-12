@@ -1,4 +1,4 @@
-from app.models import db, CartItem, SCHEMA
+from app.models import db, CartItem, SCHEMA, environment
 from sqlalchemy.sql import text
 
 

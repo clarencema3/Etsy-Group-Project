@@ -13,6 +13,25 @@ function NewProductForm() {
     const [price, setPrice] = useState("");
     const [stock, setStock] = useState("");
     const [previewImg, setPreviewImg] = useState("");
+    const [validations, setValidations] = useState({});
+    const [submitted, setSubmitted] = useState(false);
+
+    function isImage(url) {
+      return /(.*)(\.png|.jpg|.jpeg)/.test(url);
+    }
+
+    useEffect(() => {
+      const validate = () => {
+        const errors = {}
+        if (isImage(previewImg) === false) errors.previewImg = 'Image URL must end in .png, .jpg, or .jpeg'
+        if (!productName) errors.name = 'Product name is required'
+        if (!price || typeof Number(price) !== "number")  errors.price = 'Price is required and should be a number'
+        if (!stock || typeof Number(stock) !== "number")  errors.stock = 'Stock is required and should be a number'
+        if (!description) errors.description = 'Description is required'
+        setValidations(errors)
+      }
+      validate()
+    }, [previewImg, productName, price, stock, description])
 
     // grab user id from state
     const user = useSelector((state) => state.session.user)
@@ -25,26 +44,31 @@ function NewProductForm() {
 
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-
+      e.preventDefault();
+      setSubmitted(true)
+      if (!Object.values(validations).length) {
         const newProduct = {
-          "product_name": productName,
+            "product_name": productName,
             "description": description,
             "price": price,
             "seller_id": userId,
             "stock": stock,
-          "preview_img": previewImg
+            "preview_img": previewImg
         };
-
-        console.log("newProduct from submit form handler", newProduct)
+        
+        setProductName('')
+        setDescription('')
+        setPrice('')
+        setStock('')
+        setPreviewImg('')
+        setValidations({})
 
         let createdProduct = await dispatch(addNewProduct(newProduct));
-        console.log("newProduct from inside form CLICKHANDLER", createdProduct);
 
         if (createdProduct) {
             history.push(`/`);
         }
-        console.log("After history")
+      }
     }
 
     return (
@@ -61,6 +85,7 @@ function NewProductForm() {
               placeholder="Product Name"
               onChange={(e) => setProductName(e.target.value)}
             />
+            {submitted && validations.name && (<p className='create__product__error'>{validations.name}</p>)}
           </label>
           <label for="description">
             <p>Description*</p>
@@ -75,6 +100,7 @@ function NewProductForm() {
             >
               {description}
             </textarea>
+            {submitted && validations.description && (<p className='create__product__error'>{validations.description}</p>)}
           </label>
           <h2>Inventory & Pricing</h2>
           <p>
@@ -90,6 +116,7 @@ function NewProductForm() {
               placeholder="Price (USD)"
               onChange={(e) => setPrice(e.target.value)}
             />
+            {submitted && validations.price && (<p className='create__product__error'>{validations.price}</p>)}
           </label>
           <label>
             <p>Stock*</p>
@@ -100,6 +127,7 @@ function NewProductForm() {
               placeholder="Stock"
               onChange={(e) => setStock(e.target.value)}
             />
+             {submitted && validations.stock && (<p className='create__product__error'>{validations.stock}</p>)}
           </label>
           <h2>Photos</h2>
           <p>
@@ -115,6 +143,7 @@ function NewProductForm() {
               placeholder="Preview Img"
               onChange={(e) => setPreviewImg(e.target.value)}
             />
+             {submitted && validations.previewImg && (<p className='create__product__error'>{validations.previewImg}</p>)}
           </label>
           <br />
           <button type="submit">Create Listing</button>

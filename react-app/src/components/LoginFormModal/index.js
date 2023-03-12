@@ -17,9 +17,14 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      closeModal()
     }
   };
+
+  const handleDemoClick = async () => {
+    const data = await dispatch(login("demo@aa.io", "password"))
+    closeModal()
+  }
 
   return (
     <>
@@ -49,6 +54,7 @@ function LoginFormModal() {
           />
         </label>
         <button type="submit">Log In</button>
+        <button onClick={handleDemoClick}>Demo User</button>
       </form>
     </>
   );

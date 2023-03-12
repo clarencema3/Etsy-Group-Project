@@ -1,4 +1,4 @@
-from app.models import db, Review, SCHEMA
+from app.models import db, Review, SCHEMA, environment
 from datetime import datetime
 from sqlalchemy.sql import text
 

@@ -1,4 +1,4 @@
-from app.models import db, Purchase, SCHEMA
+from app.models import db, Purchase, SCHEMA, environment
 from sqlalchemy.sql import text
 
 

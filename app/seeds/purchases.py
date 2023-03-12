@@ -18,5 +18,9 @@ def seed_purchases():
 
 
 def undo_purchases():
-    db.session.execute(text("DELETE FROM purchases"))
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.purchases RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM purchases")
+
     db.session.commit()

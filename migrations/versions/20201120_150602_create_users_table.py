@@ -34,6 +34,11 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+    
+    with context.begin_transaction():
+            if environment == "production":
+                context.execute(f"SET search_path TO {SCHEMA}")
+            context.run_migrations()
     # ### end Alembic commands ###qqqqqqqqq
 
 

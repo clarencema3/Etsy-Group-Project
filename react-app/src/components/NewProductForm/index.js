@@ -42,9 +42,9 @@ function NewProductForm() {
         console.log("newProduct from inside form CLICKHANDLER", createdProduct);
 
         if (createdProduct) {
-            history.push(`/products/${createdProduct.id}`);
+            history.push(`/`);
         }
-
+        console.log("After history")
     }
 
     return (

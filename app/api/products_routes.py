@@ -25,6 +25,7 @@ def get_single_product(id):
 @products_routes.route("/", methods=["POST"])
 def create_new_product():
     res = request.get_json()
+    print("res from inside POST ROUTE", res)
     form = ProductForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():

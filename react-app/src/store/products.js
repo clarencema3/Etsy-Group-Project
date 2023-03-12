@@ -1,6 +1,8 @@
 //actions
 export const GET_ALL_PRODUCTS = "products/all"
 export const GET_SINGLE_PRODUCT = "product"
+export const DELETE_PRODUCT = "product/delete"
+export const EDIT_PRODUCT = "product/edit"
 
 //action creators
 export const getProducts = (products) => {
@@ -13,6 +15,20 @@ export const getProducts = (products) => {
 export const getSingleProduct = (product) => {
     return {
         type: GET_SINGLE_PRODUCT,
+        product
+    }
+}
+
+export const removeProduct = (product) => {
+    return {
+        type: DELETE_PRODUCT,
+        product
+    }
+}
+
+export const updateProduct = (product) => {
+    return {
+        type: EDIT_PRODUCT,
         product
     }
 }
@@ -38,6 +54,30 @@ export const fetchSingleProduct = (productId) => async(dispatch) => {
     }
 }
 
+export const deleteProduct = (productId) => async(dispatch) => {
+    const response = await fetch(`/api/products/${productId}`, {
+        method: "DELETE"
+    })
+
+    if (response.ok) {
+        dispatch(removeProduct(productId))
+    }
+}
+
+export const editProduct = (product) => async(dispatch) => {
+    const response = await fetch(`/api/products/${product.id}`, {
+        method: "put",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(product)
+    })
+
+    if (response.ok) {
+        const product = await response.json()
+        dispatch(updateProduct(product))
+    }
+}
 
 const initialState = {}
 
@@ -45,6 +85,9 @@ const initialState = {}
 const productsReducer = (state = initialState, action) => {
     let newState = {...state}
     switch(action.type) {
+        case DELETE_PRODUCT:
+            delete newState[action.products.id]
+            return newState
         case GET_ALL_PRODUCTS:
             newState['products'] = action.products
             return newState

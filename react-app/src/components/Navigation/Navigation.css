@@ -5,3 +5,81 @@
 .hidden {
   display: none;
 }
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  align-items: center;
+}
+
+.nav-buttons {
+  display: flex;
+  width: 200px;
+  /* border: 1px solid black; */
+  justify-content: center;
+  align-items: center;
+}
+
+div[class*="nav-buttons-"] {
+  border: 1px solid white;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.nav-profile-button {
+  border: 1px solid white;
+  border-radius: 40%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 5px;
+}
+
+.fa-user {
+  border: 1px solid lightgray;
+  background-color: lightgray;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-buttons-shop:hover {
+  background-color: lightgray;
+}
+
+.nav-buttons-cart:hover {
+  background-color: lightgray;
+}
+
+.nav-profile-button:hover {
+  background-color: lightgray;
+}
+
+.nav-search {
+  display: flex;
+  justify-content: center;
+  width: 75%;
+}
+
+.nav-search-bar {
+  border-radius: 15px;
+  padding: 15px;
+  height: 30px;
+  width: 95%;
+}
+
+.nav-home {
+  font-size: 30px;
+  margin: 0px 10px;
+}
+
+.nav-home:hover {
+  text-decoration: underline;
+}
+
+/* profile dropdown CSS -------------------------------------------- */

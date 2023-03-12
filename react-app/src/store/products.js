@@ -4,6 +4,7 @@ export const GET_SINGLE_PRODUCT = "product"
 export const DELETE_PRODUCT = "product/delete"
 export const EDIT_PRODUCT = "product/edit"
 
+
 //action creators
 export const getProducts = (products) => {
     return {
@@ -18,6 +19,7 @@ export const getSingleProduct = (product) => {
         product
     }
 }
+
 
 export const removeProduct = (product) => {
     return {
@@ -54,6 +56,7 @@ export const fetchSingleProduct = (productId) => async(dispatch) => {
     }
 }
 
+
 export const deleteProduct = (productId) => async(dispatch) => {
     const response = await fetch(`/api/products/${productId}`, {
         method: "DELETE"
@@ -88,6 +91,7 @@ const productsReducer = (state = initialState, action) => {
         case DELETE_PRODUCT:
             delete newState[action.products.id]
             return newState
+
         case GET_ALL_PRODUCTS:
             newState['products'] = action.products
             return newState

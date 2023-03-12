@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { fetchProducts } from "../../store/products";
 
+
 const ShowAllProducts = () => {
     const dispatch = useDispatch()
     const products = useSelector(state => state.products.products)
@@ -25,6 +26,7 @@ const ShowAllProducts = () => {
         dispatch(fetchProducts())
     }, [dispatch])
 
+
     if (!products) {
         return <div>Loading...</div>
     }
@@ -32,6 +34,7 @@ const ShowAllProducts = () => {
     console.log("Products array from products:", productsArr)
     return productsArr && products &&(
         <>
+
             {userLoggedIn()}
             <div className="imageContainer">
 {productsArr?.map((product) => (
@@ -40,12 +43,14 @@ const ShowAllProducts = () => {
         <img src={product.preview_img} alt="product image" />${Number(product.price).toFixed(2)}
 </NavLink>
         </div>
+
 ))}
             </div>
             <div>
                 What is Etsy?
             </div>
             <div>
+
             Support independent creators
             </div>
             <div>
@@ -54,6 +59,7 @@ const ShowAllProducts = () => {
             <div>
             Have a question? Well, we’ve got some answers.
             <button onClick={() => alert('Feature Coming Soon...')}>Go to Help Center</button>
+
             </div>
         </>
     )

@@ -12,11 +12,13 @@ const SingleProduct = () => {
     console.log('product from use selector', product)
     
 
+
     const maxQuantity = [];
     for (let i = 1; i <= product?.stock; i++) {
       maxQuantity.push(i)
     }
     
+
     useEffect(() => {
       dispatch(fetchSingleProduct(productId))
     }, [dispatch, productId])
@@ -24,6 +26,7 @@ const SingleProduct = () => {
     if (!product) return <h1>loading</h1>
 
     return (
+
         <div className="page-container">
           <div className="product-div">
             <div className="product-image-div">
@@ -59,6 +62,7 @@ const SingleProduct = () => {
           <div className="reviews-div">
             <div className="reviews">
               render reviews component here
+
             </div>
           </div>
         </div>

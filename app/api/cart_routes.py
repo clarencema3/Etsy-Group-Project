@@ -1,8 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db, Product, CartItem
-from app.forms import LoginForm
-from app.forms import SignUpForm
-from app.forms import ProductForm
+from app.forms import ShoppingCartForm
+
 from flask_login import current_user, login_user, logout_user, login_required
 
 cart_routes = Blueprint('cart', __name__)
@@ -24,3 +23,25 @@ def get_all_cart_items():
 
     print("cart_items TEST \n\n\n\n", list(cart_items))
     return cart_items_arr
+
+@cart_routes.route('/', methods=["POST"])
+def add_cart_item():
+    res = request.get_json()
+    form = ShoppingCartForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        cart_item = CartItem(
+            user_id=res["user_id"],
+            product_id=res["product_id"],
+            quantity=res["quantity"],
+        )
+        db.session.add(cart_item)
+        db.session.commit()
+        return cart_item.to_dict()
+
+
+
+@cart_routes.route('/<int:id>', methods=["DELETE"])
+def delete_cart_item(id):
+    pass

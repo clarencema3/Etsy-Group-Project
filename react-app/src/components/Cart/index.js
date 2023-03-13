@@ -20,7 +20,7 @@ const Cart = () => {
 
     return (
         <div>
-            {/* <h1>{cartItems && cartItems[0].product.description}</h1> */}
+            <h1>{cartItems[1].product.description}</h1>
         </div>
     )
 }

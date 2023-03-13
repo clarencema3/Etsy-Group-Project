@@ -74,3 +74,30 @@ p {
 .low-stock {
     color: red;
 }
+
+.buyersLogoContainer {
+    display: flex;
+    flex-shrink: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.buyersUserAndListingContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-left: 10px;
+}
+
+.buyersUserAndListingContainer strong {
+    font-size: 16px;
+}
+
+.buyersImageLogo {
+    height: 35px;
+    width: 35px;
+    border-radius: 150px;
+    margin: 20px 0;
+    /* margin: auto; */
+}

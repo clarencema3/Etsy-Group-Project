@@ -9,7 +9,6 @@ const SingleProduct = () => {
   const dispatch = useDispatch()
   const { productId } = useParams()
   const product = useSelector(state => state.products.product)
-
   const maxQuantity = [];
   for (let i = 1; i <= product?.stock; i++) {
     maxQuantity.push(i)
@@ -22,6 +21,25 @@ const SingleProduct = () => {
   }, [dispatch, productId])
 
   if (!product) return <h1>loading</h1>
+
+  const reviews = product?.reviews
+  const numberOfReviews = () => {
+    if (reviews && reviews.length === 1) {
+      return (
+        <div>{reviews && reviews.length} review <i className="fas fa-star" /></div>
+      )
+    } else if (reviews && reviews.length < 1) {
+      return (
+        <div>
+          Be the first to post a review!
+        </div>
+      )
+    } else {
+      return (
+        <div>{reviews && reviews.length} reviews <i className="fas fa-star" /></div>
+      )
+    }
+  }
 
   return product && (
 
@@ -58,10 +76,25 @@ const SingleProduct = () => {
           </div>
         </div>
       </div>
-      <div className="reviews-div">
-        <div className="reviews">
-          render reviews component here
+      <div className="reviewsContainer white-space">
+        <div className="numberOfreviews">
+          {numberOfReviews()}
+        </div>
+        <div className="buyersContainer">
+          <div>
+            {reviews?.map(review => (
+              <>
+                <div>{review.review}</div>
+                <div className="buyersLogoContainer">
+                  <img className="buyersImageLogo" src="https://i.etsystatic.com/25260451/r/il/402e7c/4387266595/il_794xN.4387266595_dh89.jpg" alt="logo" />
+                  <div className="buyersUserAndListingContainer">
+                    <strong>{product.user.username} {review.timestamp}</strong>
 
+                  </div>
+                </div>
+              </>
+            ))}
+          </div>
         </div>
       </div>
     </div>

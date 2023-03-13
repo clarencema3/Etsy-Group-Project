@@ -3,6 +3,7 @@
 export const GET_ALL_CART_ITEMS = "cart"
 export const ADD_CART_ITEM = "cart/ADD_ITEM"
 export const EDIT_CART_ITEM = "cart/EDIT_CART_ITEM"
+export const DELETE_CART_ITEM = "cart/DELETE_CART_ITEM"
 
 
 //action creators
@@ -24,6 +25,13 @@ export const updateCartItem = (cartItem) => {
   return {
     type: EDIT_CART_ITEM,
     cartItem,
+  }
+}
+
+export const removeCartItem = (item_info) => {
+  return {
+    type: DELETE_CART_ITEM,
+    item_info
   }
 }
 
@@ -69,6 +77,22 @@ export const editCartItem = (item_info) => async (dispatch) => {
   }
 }
 
+// delete cart item
+export const deleteCartItem = (item_info) => async (dispatch) => {
+  const response = await fetch("/api/cart/", {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(item_info),
+  });
+
+  if (response.ok) {
+    const data = await response.json()
+    console.log("data from thunk ```````````````````````````", data)
+    dispatch(removeCartItem(item_info));
+  }
+}
+
+
 const initialState = {}
 
 //reducer
@@ -84,11 +108,14 @@ const cartReducer = (state = initialState, action) => {
       return newState
 
     case EDIT_CART_ITEM:
-      console.log("action from inside REDUCER", action)
-      console.log("newState from inside REDUCER", newState)
       newState.cart = { ...state.cart }
       newState.cart[action.cartItem.product_id].quantity = action.cartItem.quantity
 
+      return newState
+
+    case DELETE_CART_ITEM:
+      newState.cart = { ...state.cart }
+      delete newState.cart[action.item_info.product_id]
       return newState
 
     default:

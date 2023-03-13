@@ -18,8 +18,8 @@ const SellersProducts = () => {
   // }))
 
   useEffect(() => {
-    dispatch(fetchSellersProducts(user.id))
-  }, [dispatch, user.id])
+    dispatch(fetchSellersProducts(user?.id))
+  }, [dispatch])
 
   if (!sellerProducts) {
     return <div>Loading...</div>
@@ -27,19 +27,14 @@ const SellersProducts = () => {
 
   const sellerProductsArr = Object.values(sellerProducts)
 
-
-
-  const userLoggedIn = () => {
-    if (!user) {
-      return (
-        <Redirect to={"/"} />
-      )
-    }
+  if (!user) {
+    return null
   }
+  
 
   return (
     <div className="white-space">
-      {userLoggedIn()}
+      
       <div className="sellerProductsPageContainer">
         <div className="sellersLogoContainer">
           <img className="sellerImageLogo" src="https://i.etsystatic.com/25260451/r/il/402e7c/4387266595/il_794xN.4387266595_dh89.jpg" alt="logo" />

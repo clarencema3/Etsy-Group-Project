@@ -46,9 +46,11 @@ def create_new_product():
 @products_routes.route("/<int:id>", methods=["DELETE"])
 def delete_a_product(id):
     product = Product.query.get(id)
+    print('product in backend api route \n\n\n\n', product.to_dict())
     if product:
         db.session.delete(product)
         db.session.commit()
+        return {"Response": f"Successfully deleted item."}
 
 
 @products_routes.route("/<int:id>", methods=["PUT"])

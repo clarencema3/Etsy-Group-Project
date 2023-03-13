@@ -107,6 +107,7 @@ export const addNewProduct = (newProduct) => async (dispatch) => {
 };
 
 export const deleteProduct = (productId) => async (dispatch) => {
+  console.log('product id passed to thunk', productId)
   const response = await fetch(`/api/products/${productId}`, {
     method: "DELETE",
   });
@@ -139,7 +140,8 @@ const productsReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case DELETE_PRODUCT:
-      delete newState[action.products];
+      newState.sellerProducts = {...state.sellerProducts}
+      delete newState.sellerProducts[action.productId]
       return newState;
 
     case GET_ALL_PRODUCTS:

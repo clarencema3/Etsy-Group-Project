@@ -18,8 +18,8 @@ const SellersProducts = () => {
   // }))
 
   useEffect(() => {
-    dispatch(fetchSellersProducts(user && user.id))
-  }, [dispatch, user && user.id])
+    dispatch(fetchSellersProducts(user.id))
+  }, [dispatch, user.id])
 
   if (!sellerProducts) {
     return <div>Loading...</div>

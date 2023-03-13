@@ -1,17 +1,23 @@
-import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import './NewProductForm.css'
-import { addNewProduct } from "../../store/products";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useModal } from "../../context/Modal";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { editProduct } from "../../store/products";
 
-function NewProductForm() {
+const EditProductModal = ({ id }) => {
   const history = useHistory();
-  const dispatch = useDispatch();
-  const [productName, setProductName] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [stock, setStock] = useState("");
-  const [previewImg, setPreviewImg] = useState("");
+  const dispatch = useDispatch()
+  const { closeModal } = useModal()
+  const sellerProducts = useSelector(state => state.products.sellerProducts)
+  let currentProduct = sellerProducts[id]
+  console.log("current products from the editmodal", currentProduct)
+  // console.log("id from the editmodal", id)
+  const [productName, setProductName] = useState(currentProduct.product_name);
+  const [description, setDescription] = useState(currentProduct.description);
+  const [price, setPrice] = useState(currentProduct.price);
+  const [stock, setStock] = useState(currentProduct.stock);
+  const [previewImg, setPreviewImg] = useState(currentProduct.preview_img);
   const [validations, setValidations] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
@@ -32,26 +38,24 @@ function NewProductForm() {
     validate()
   }, [previewImg, productName, price, stock, description])
 
-  // grab user id from state
   const user = useSelector((state) => state.session.user)
   if (!user) {
     return null;
   }
 
   const userId = user.id
-  // console.log("user.id", user.id)
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true)
     if (!Object.values(validations).length) {
-      const newProduct = {
+      const editedData = {
         "product_name": productName,
         "description": description,
         "price": price,
         "seller_id": userId,
         "stock": stock,
+        "id": currentProduct.id,
         "preview_img": previewImg
       };
 
@@ -62,11 +66,8 @@ function NewProductForm() {
       setPreviewImg('')
       setValidations({})
 
-      let createdProduct = await dispatch(addNewProduct(newProduct));
-
-      if (createdProduct) {
-        history.push(`/`);
-      }
+      dispatch(editProduct(editedData));
+      closeModal()
     }
   }
 
@@ -145,10 +146,10 @@ function NewProductForm() {
           {submitted && validations.previewImg && (<p className='create__product__error'>{validations.previewImg}</p>)}
         </label>
         <br />
-        <button type="submit">Create Listing</button>
+        <button type="submit">Edit Listing</button>
       </form>
     </div>
-  );
+  )
 }
 
-export default NewProductForm
+export default EditProductModal

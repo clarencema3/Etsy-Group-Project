@@ -4,6 +4,7 @@ import { fetchProducts, fetchSingleProduct } from "../../store/products";
 import { useParams } from "react-router-dom";
 import './SingleProduct.css'
 import { clearState } from "../../store/products";
+import OpenModalButton from "../OpenModalButton";
 
 const SingleProduct = () => {
   const dispatch = useDispatch()
@@ -80,17 +81,30 @@ const SingleProduct = () => {
         <div className="numberOfreviews">
           {numberOfReviews()}
         </div>
+        <br />
         <div className="buyersContainer">
           <div>
             {reviews?.map(review => (
               <>
+                <div><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /></div>
                 <div>{review.review}</div>
                 <div className="buyersLogoContainer">
                   <img className="buyersImageLogo" src="https://i.etsystatic.com/25260451/r/il/402e7c/4387266595/il_794xN.4387266595_dh89.jpg" alt="logo" />
                   <div className="buyersUserAndListingContainer">
                     <strong>{product.user.username} {review.timestamp}</strong>
-
                   </div>
+                </div>
+                <div>
+                  <OpenModalButton
+                    buttonText="Edit"
+                    modalComponent={
+                      <h1>Not yet functional Edit</h1>
+                    } />
+                  <OpenModalButton
+                    buttonText="Delete"
+                    modalComponent={
+                      <h1>Not yet functional Delete</h1>
+                    } />
                 </div>
               </>
             ))}

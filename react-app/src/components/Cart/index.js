@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { fetchCartItems } from "../../store/cart";
 
 const Cart = () => {
@@ -9,7 +9,7 @@ const Cart = () => {
     const user = useSelector((state) => state.session.user);
 
     useEffect(() => {
-      dispatch(fetchCartItems());
+        dispatch(fetchCartItems());
     }, [dispatch]);
 
     if (!cartItems) return <h1>loading</h1>;
@@ -20,7 +20,7 @@ const Cart = () => {
 
     return (
         <div>
-            <h1>{cartItems["1"].product.description}</h1>
+            <h1>{cartItems[1].product.description}</h1>
         </div>
     )
 }

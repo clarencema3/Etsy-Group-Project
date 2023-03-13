@@ -7,6 +7,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  z-index: 99;
+  /* z-index of 99 added to prevent other positon absolutes layering on top of modal */
 }
 
 #modal-background {
@@ -23,4 +26,5 @@
   background-color: white;
   border-radius: 10px;
   border: 2px solid black;
+
 }

@@ -19,7 +19,7 @@ function Navigation({ isLoaded }) {
 	}
 
 	return (
-		<div className='nav-container'>
+		<div className='nav-container white-space'>
 			<div className='nav-home'>
 				<NavLink exact to="/" style={{ textDecoration: 'none', color: "black" }}>Etsy</NavLink>
 			</div>

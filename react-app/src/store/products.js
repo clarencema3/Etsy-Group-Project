@@ -6,6 +6,7 @@ export const GET_SINGLE_PRODUCT = "product";
 export const ADD_PRODUCT = "products/new";
 export const DELETE_PRODUCT = "product/delete";
 export const EDIT_PRODUCT = "product/edit";
+export const GET_SELLER_PRODUCTS = "products/current"
 
 //action creators
 export const getProducts = (products) => {
@@ -22,15 +23,22 @@ export const getSingleProduct = (product) => {
   };
 };
 
+export const getSellerProducts = (sellerProducts) => {
+  return {
+    type: GET_SELLER_PRODUCTS,
+    sellerProducts
+  }
+}
+
 export const addProduct = (product) => ({
   type: ADD_PRODUCT,
   product,
 });
 
-export const removeProduct = (product) => {
+export const removeProduct = (productId) => {
   return {
     type: DELETE_PRODUCT,
-    product,
+    productId,
   };
 };
 
@@ -62,6 +70,23 @@ export const fetchSingleProduct = (productId) => async (dispatch) => {
   }
 };
 
+export const fetchSellersProducts = (userId) => async (dispatch) => {
+  const response = await fetch("/api/products/");
+
+  if (response.ok) {
+    let data = await response.json();
+    let normalizedData = {};
+    data = data.filter(productItem => {
+      return productItem.seller_id === userId
+    })
+    data.forEach((product) => (normalizedData[product.id] = product));
+    // normalizedData = Object.values(normalizedData).filter(productItem => {
+    //   return productItem.seller_id === userId
+    // })
+    dispatch(getSellerProducts(normalizedData));
+  }
+}
+
 export const addNewProduct = (newProduct) => async (dispatch) => {
   console.log("reached addNewProduct Thunk", newProduct)
   const response = await fetch(`/api/products/`, {
@@ -73,8 +98,8 @@ export const addNewProduct = (newProduct) => async (dispatch) => {
   });
 
   if (response.ok) {
-      const details = await response.json();
-      console.log("inside thunk response", details)
+    const details = await response.json();
+    console.log("inside thunk response", details)
     dispatch(addProduct(details));
 
     return details;
@@ -112,8 +137,9 @@ const initialState = {};
 const productsReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
+
     case DELETE_PRODUCT:
-      delete newState[action.products.id];
+      delete newState[action.products];
       return newState;
 
     case GET_ALL_PRODUCTS:
@@ -121,6 +147,9 @@ const productsReducer = (state = initialState, action) => {
       return newState;
     case GET_SINGLE_PRODUCT:
       newState["product"] = action.product;
+      return newState;
+    case GET_SELLER_PRODUCTS:
+      newState["sellerProducts"] = action.sellerProducts;
       return newState;
     case ADD_PRODUCT:
       newState["product"] = action.product;

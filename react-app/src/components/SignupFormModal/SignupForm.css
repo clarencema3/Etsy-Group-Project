@@ -1,13 +1,16 @@
 .sign-form-container {
     display: flex;
     justify-content: center;
-    height: 380px;
-    width: 300px;
+    /* height: 380px;
+    width: 300px; */
+    /* uncommented the width/height due to the state of the login modal changing and overflowing the container. removing hard-set width/height allows container to be flexible in every state instead  */
     border-radius: 10px;
 }
 
 .sign-form-div {
-    height: 300px;
+    /* height: 300px; */
+    /* default property of height is auto, and if we were to set a height value then any flexible content will overflow. */
+    padding: 20px;
     width: 270px;
 }
 

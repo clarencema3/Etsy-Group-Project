@@ -1,13 +1,20 @@
 .login-form-container {
     display: flex;
     justify-content: center;
-    height: 300px;
-    width: 300px;
     border-radius: 10px;
+    padding: 20px;
+
+    /* uncommented the width/height due to the state of the login modal changing and overflowing the container. removing hard-set width/height allows container to be flexible in every state instead  */
+    /* height: 300px; */
+    /* width: 300px; */
 }
 
+
+
 .login-form-div {
-    height: 300px;
+    /* uncommented height value due to overflow, this way the height is flexible to the content instead */
+
+    /* height: 300px; */
     width: 270px;
 }
 

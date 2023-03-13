@@ -19,7 +19,7 @@ const SellersProducts = () => {
 
   useEffect(() => {
     dispatch(fetchSellersProducts(user && user.id))
-  }, [dispatch, sellerProducts])
+  }, [dispatch, user && user.id])
 
   if (!sellerProducts) {
     return <div>Loading...</div>
@@ -27,11 +27,7 @@ const SellersProducts = () => {
 
   const sellerProductsArr = Object.values(sellerProducts)
 
-  const allSellersProductsId = sellerProductsArr.map(product => (
-    product.id
-  ))
 
-  console.log("seller products id", allSellersProductsId)
 
   const userLoggedIn = () => {
     if (!user) {

@@ -35,10 +35,10 @@ export const addProduct = (product) => ({
   product,
 });
 
-export const removeProduct = (product) => {
+export const removeProduct = (productId) => {
   return {
     type: DELETE_PRODUCT,
-    product,
+    productId,
   };
 };
 
@@ -137,8 +137,9 @@ const initialState = {};
 const productsReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
+
     case DELETE_PRODUCT:
-      delete newState[action.products.id];
+      delete newState[action.products];
       return newState;
 
     case GET_ALL_PRODUCTS:

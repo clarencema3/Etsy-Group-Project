@@ -40,12 +40,12 @@ const ShowAllProducts = () => {
             {userLoggedIn()}
             <div className="imageContainer white-space">
                 {productsArr?.map((product) => (
-                    <div className="productCard" key={product?.id}>
-                        <NavLink to={`/products/${product.id}`}>
-                            <img src={product.preview_img} alt="product image" />
-                            <div className="productPrice">${Number(product.price).toFixed(2)}</div>
-                        </NavLink>
-                    </div>
+
+                    <NavLink to={`/products/${product.id}`} className="productCard" key={product.id}>
+                        <img src={product.preview_img} alt="product image" />
+                        <div className="productPrice">${Number(product.price).toFixed(2)}</div>
+                    </NavLink>
+
                 ))}
             </div>
             <section className="whatIsEtsyContainer">

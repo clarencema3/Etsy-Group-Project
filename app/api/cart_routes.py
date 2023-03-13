@@ -17,11 +17,9 @@ def get_all_cart_items():
     for item in list(cart_items):
         item_dict = item.to_dict()
         item_dict['product'] = item.products.to_dict()
-        print("item_dict in for loop $$$$$$$$ \n\n\n\n", item_dict)
         cart_items_arr.append(item_dict)
 
 
-    print("cart_items TEST \n\n\n\n", list(cart_items))
     return cart_items_arr
 
 @cart_routes.route('/', methods=["POST"])
@@ -40,7 +38,17 @@ def add_cart_item():
         db.session.commit()
         return cart_item.to_dict()
 
+@cart_routes.route('/', methods=["PUT"])
+def edit_cart_item():
+    res = request.get_json()
+    # print("res \n\n\n\n\n\n", res)
+    current_cart_item = CartItem.query.filter_by(product_id=res["product_id"], user_id=res["user_id"])
+    print("current_cart_item from backend \n\n\n\n $$$$$$$$$", current_cart_item[0])
+    if current_cart_item[0]:
+        current_cart_item[0].quantity = res["quantity"]
+        db.session.commit()
 
+    return current_cart_item[0].to_dict()
 
 @cart_routes.route('/<int:id>', methods=["DELETE"])
 def delete_cart_item(id):

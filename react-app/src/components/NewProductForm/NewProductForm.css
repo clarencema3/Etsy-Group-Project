@@ -1,0 +1,41 @@
+.create-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    border-top: 2px solid lightgray;
+}
+
+.form-contents {
+    flex-basis: 50%;
+}
+
+.create__product__error {
+    color: red;
+}
+
+.form-input {
+    width: 98%;
+    border: 1px solid lightgray;
+    box-shadow: 2px 2px lightgray;
+    border-radius: 5px;
+}
+
+.form-section {
+    border-bottom: 2px solid lightgray;
+    padding-bottom: 15px;
+}
+
+.form-button-div {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.submit-form-btn {
+    width: 30%;
+    padding: 5px;
+    color: white;
+    background-color: darkgray;
+    border-radius: 15px;
+    cursor: pointer;
+}

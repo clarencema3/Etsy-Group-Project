@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
-import { fetchCartItems } from "../../store/cart";
+import { editCartItem, fetchCartItems } from "../../store/cart";
 
 const Cart = () => {
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart.cart);
     const user = useSelector((state) => state.session.user);
 
+
     useEffect(() => {
         dispatch(fetchCartItems());
     }, [dispatch]);
+
 
     if (!cartItems) return <h1>loading</h1>;
     console.log("cartItems from inside component", cartItems)
@@ -26,6 +28,20 @@ const Cart = () => {
         return maxQuantity
     }
 
+    const onChangeHandler = async (e, item) => {
+        // console.log("e from changeHanlder", e)
+        // console.log("item from inside ChangeHandler", item)
+        const item_info = {
+          user_id: user.id,
+          product_id: item.id,
+          quantity: Number(e.target.value),
+        };
+
+        console.log("item_info", item_info)
+
+        await dispatch(editCartItem(item_info))
+    };
+
     return (
       <div>
         {cartArr?.map((item) => (
@@ -40,7 +56,7 @@ const Cart = () => {
             </div>
             <div className="quantity">
               <p>Quantity</p>
-              <select>
+              <select onChange={e => onChangeHandler(e, item)}>
                 {/* <option value={item.quantity}>{item.quantity} </option> */}
                 {getQuantity(item.product.stock).map((number) =>
                   item.quantity === number ? (

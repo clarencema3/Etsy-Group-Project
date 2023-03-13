@@ -4,8 +4,8 @@ import { NavLink, Redirect } from "react-router-dom";
 import { fetchSellersProducts } from "../../store/products";
 import OpenModalButton from "../OpenModalButton";
 import "./SellersProducts.css"
-import { useModal } from "../../context/Modal";
 import DeleteProductModal from "./deleteProductModal";
+import EditProductModal from "./editProductModal";
 
 const SellersProducts = () => {
   const dispatch = useDispatch();
@@ -67,9 +67,7 @@ const SellersProducts = () => {
                 <OpenModalButton
                   buttonText="Edit"
                   modalComponent={
-                    <div>
-                      <h2>Edit Form Here</h2>
-                    </div>
+                    <EditProductModal id={sellersProduct.id} />
                   }
                 />
 

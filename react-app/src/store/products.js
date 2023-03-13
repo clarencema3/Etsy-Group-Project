@@ -117,6 +117,7 @@ export const deleteProduct = (productId) => async (dispatch) => {
 };
 
 export const editProduct = (product) => async (dispatch) => {
+  // console.log("edit product from reducer:", product)
   const response = await fetch(`/api/products/${product.id}`, {
     method: "put",
     headers: {
@@ -124,7 +125,6 @@ export const editProduct = (product) => async (dispatch) => {
     },
     body: JSON.stringify(product),
   });
-
   if (response.ok) {
     const product = await response.json();
     dispatch(updateProduct(product));
@@ -141,7 +141,12 @@ const productsReducer = (state = initialState, action) => {
     case DELETE_PRODUCT:
       delete newState[action.products];
       return newState;
-
+    case EDIT_PRODUCT:
+      console.log("newstate from reducer", newState)
+      console.log("action from reducer", action)
+      newState.sellerProducts = { ...state.sellerProducts }
+      newState.sellerProducts[action.product.id] = action.product
+      return newState;
     case GET_ALL_PRODUCTS:
       newState["products"] = action.products;
       return newState;

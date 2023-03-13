@@ -7,8 +7,14 @@ export const ADD_PRODUCT = "products/new";
 export const DELETE_PRODUCT = "product/delete";
 export const EDIT_PRODUCT = "product/edit";
 export const GET_SELLER_PRODUCTS = "products/current"
-
+export const CLEAR_STATE = "products/clear"
 //action creators
+export const clearState = () => {
+  return {
+    type: CLEAR_STATE
+  }
+}
+
 export const getProducts = (products) => {
   return {
     type: GET_ALL_PRODUCTS,
@@ -138,7 +144,9 @@ const initialState = {};
 const productsReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
-
+    case CLEAR_STATE:
+      newState.product = {}
+      return newState
     case DELETE_PRODUCT:
       newState.sellerProducts = {...state.sellerProducts}
       delete newState.sellerProducts[action.productId]

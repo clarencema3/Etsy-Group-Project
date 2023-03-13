@@ -35,18 +35,23 @@ const SingleProduct = () => {
         </div>
         <div className="product-details-div">
           <div className="product-details">
-            <p>${product.price}</p>
-            <p className="product-label">Product Name:</p>
+            {product.stock <= 5 ? <strong className="low-stock">Only {product.stock} left</strong> : ""}
+            <p className="product-price">${product.price}</p>
+            <strong className="product-label">Product Name:</strong>
             <p>{product.product_name}</p>
-            <p className="product-label">Product Description:</p>
+            <strong className="product-label">Product Description:</strong>
             <p>{product.description}</p>
           </div>
           <div className="product-seller-div">
-            <p>Seller's Name: {user.username}</p>
+            <p>Seller's Name: 
+              <span>    {user.username}</span>
+            </p>
             <p>Rating</p>
-            <p>Total Stock: {product.stock}</p>
+            <p>Total Stock: 
+              <span>    {product.stock}</span>
+            </p>
             <p>Quantity</p>
-            <select>
+            <select className="select-quantity">
               <option>Select Quantity</option>
               {maxQuantity.map(number => (
                 <option>{number}</option>
@@ -54,8 +59,8 @@ const SingleProduct = () => {
               )}
             </select>
             <div className="button-div">
-              <button>Buy it now</button>
-              <button>Add to Cart</button>
+              <button className="buy-button">Buy it now</button>
+              <button className="add-cart-button">Add to Cart</button>
             </div>
           </div>
         </div>

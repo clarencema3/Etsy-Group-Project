@@ -5,14 +5,15 @@ import { deleteProduct, fetchSellersProducts } from "../../store/products";
 
 
 const DeleteProductModal = ({ id }) => {
+  console.log('product id passed in through seller product page', +id)
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user)
+  // const user = useSelector((state) => state.session.user)
   const { closeModal } = useModal()
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(deleteProduct(id))
-    dispatch(fetchSellersProducts(user.id))
+    dispatch(deleteProduct(+id))
+    // dispatch(fetchSellersProducts(user.id))
     closeModal()
   }
   return (

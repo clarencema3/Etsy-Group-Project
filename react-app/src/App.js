@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import AllProducts from "./components/AllProducts"
 import SingleProduct from "./components/SingleProduct";
 import NewProductForm from "./components/NewProductForm";
+import SellersProducts from "./components/SellersProducts";
 import Cart from "./components/Cart";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/products/new">
             <NewProductForm />
+          </Route>
+          <Route path="/products/current">
+            <SellersProducts />
           </Route>
           <Route path="/products/:productId">
             <SingleProduct />

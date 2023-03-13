@@ -1,9 +1,19 @@
 .profile-dropdown {
   position: absolute;
+  /* added z-index and background due to overlapping hover elements on product-cards */
+
+  z-index: 10;
+  background: white;
+  /* added border radius so bottom left isnt sharp */
+  border-radius: 5px;
 }
 
 .hidden {
   display: none;
+}
+
+.white-space {
+  margin: 0 10%;
 }
 
 .nav-container {
@@ -15,15 +25,17 @@
 
 .nav-buttons {
   display: flex;
-  width: 200px;
+  /* width: 200px; */
+  /* commented out width so the search bar stretches when less logos/logged out -anton */
   justify-content: center;
   align-items: center;
 }
 
 div[class*="nav-buttons-"] {
-  border: 1px solid white;
   padding: 8px;
   border-radius: 50%;
+  /* commented out this line due to the overflowing border */
+  /* border: 1px solid white; */
 }
 
 .nav-profile-button {
@@ -47,6 +59,10 @@ div[class*="nav-buttons-"] {
   align-items: center;
 }
 
+.nav-buttons-shop {
+  margin-left: 10px;
+}
+
 .nav-buttons-shop:hover {
   background-color: lightgray;
 }
@@ -62,14 +78,18 @@ div[class*="nav-buttons-"] {
 .nav-search {
   display: flex;
   justify-content: center;
-  width: 75%;
+  /* width: 75%; */
+  /* Trying to get rid of white space between -anton */
+  width: 100%;
 }
 
 .nav-search-bar {
   border-radius: 15px;
   padding: 15px;
   height: 30px;
-  width: 95%;
+  /* width: 95%; */
+  /* Trying to get rid of white space between -anton */
+  width: 100%;
 }
 
 .nav-home {
@@ -157,6 +177,8 @@ div[class*="nav-buttons-"] {
   flex-direction: column;
   border: 1px solid lightgray;
   border-radius: 5px;
+  /* by default buttons were xparent, so added background white */
+  background: white;
 }
 
 .login-sign-btn {

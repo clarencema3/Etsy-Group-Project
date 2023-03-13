@@ -9,6 +9,7 @@ import OpenModalButton from "../OpenModalButton";
 const SingleProduct = () => {
   const dispatch = useDispatch()
   const { productId } = useParams()
+  const user = useSelector((state) => state.session.user)
   const product = useSelector(state => state.products.product)
   const maxQuantity = [];
   for (let i = 1; i <= product?.stock; i++) {
@@ -38,6 +39,26 @@ const SingleProduct = () => {
     } else {
       return (
         <div>{reviews && reviews.length} reviews <i className="fas fa-star" /></div>
+      )
+    }
+  }
+
+  const compareRev = reviews?.find(review => review?.user_id === user?.id)
+
+  const reviewButton = () => {
+    if (user && user?.id !== product?.user?.id && user.id !== compareRev?.user_id) {
+      return (
+        <div>
+          <OpenModalButton
+            buttonText={"Post Your Review!"}
+            modalComponent={
+              <div>
+                Post your review!
+              </div>
+            }
+          ></OpenModalButton>
+
+        </div>
       )
     }
   }
@@ -82,6 +103,7 @@ const SingleProduct = () => {
           {numberOfReviews()}
         </div>
         <br />
+        {reviewButton()}
         <div className="buyersContainer">
           <div>
             {reviews?.map(review => (

@@ -71,83 +71,90 @@ function NewProductForm() {
   }
 
   return (
-    <div>
-      <h2>Product Details</h2>
-      <p>Tell the world all about your item and why they'll love it.</p>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Product Name*
-          <input
-            type="text"
-            name="productName"
-            value={productName}
-            placeholder="Product Name"
-            onChange={(e) => setProductName(e.target.value)}
-          />
-          {submitted && validations.name && (<p className='create__product__error'>{validations.name}</p>)}
-        </label>
-        <label for="description">
-          <p>Description*</p>
-
-          <textarea
-            name="description"
-            id="description"
-            cols="30"
-            rows="10"
-            placeholder="Description"
-            onChange={(e) => setDescription(e.target.value)}
-          >
-            {description}
-          </textarea>
-          {submitted && validations.description && (<p className='create__product__error'>{validations.description}</p>)}
-        </label>
-        <h2>Inventory & Pricing</h2>
-        <p>
-          Factor cost and materials and labor. Consider the total price buyers
-          will pay too.
-        </p>
-        <label>
-          <p>Price*</p>
-          <input
-            type="text"
-            name="price"
-            value={price}
-            placeholder="Price (USD)"
-            onChange={(e) => setPrice(e.target.value)}
-          />
-          {submitted && validations.price && (<p className='create__product__error'>{validations.price}</p>)}
-        </label>
-        <label>
-          <p>Stock*</p>
-          <input
-            type="text"
-            name="stock"
-            value={stock}
-            placeholder="Stock"
-            onChange={(e) => setStock(e.target.value)}
-          />
-          {submitted && validations.stock && (<p className='create__product__error'>{validations.stock}</p>)}
-        </label>
-        <h2>Photos</h2>
-        <p>
-          Choose 1 Preview Photo to represent your image. You can add
-          additional images to your listing later.
-        </p>
-        <label>
-          <p>Preview Image*</p>
-          <input
-            type="text"
-            name="previewImg"
-            value={previewImg}
-            placeholder="Preview Img"
-            onChange={(e) => setPreviewImg(e.target.value)}
-          />
-          {submitted && validations.previewImg && (<p className='create__product__error'>{validations.previewImg}</p>)}
-        </label>
-        <br />
-        <button type="submit">Create Listing</button>
+      <form className="create-form" onSubmit={handleSubmit}>
+          <div className="form-contents">
+            <div className="form-section">
+                <h2>Product Details</h2>
+                <p>Tell the world all about your item and why they'll love it.</p>
+                <p>Product Name *</p>
+                {submitted && validations.name && (<p className='create__product__error'>{validations.name}</p>)}
+                <input
+                  type="text"
+                  name="productName"
+                  value={productName}
+                  placeholder="Product Name"
+                  className="form-input"
+                  onChange={(e) => setProductName(e.target.value)}
+                />
+                <label for="description">
+                  <p>Description *</p>
+                  {submitted && validations.description && (<p className='create__product__error'>{validations.description}</p>)}
+                  <textarea
+                    name="description"
+                    id="description"
+                    cols="30"
+                    rows="10"
+                    placeholder="Description"
+                    className="form-input"
+                    onChange={(e) => setDescription(e.target.value)}
+                  >
+                    {description}
+                  </textarea>
+                </label>
+            </div>
+            <div className="form-section">
+                <h2>Inventory & Pricing</h2>
+                <p>
+                  Factor cost and materials and labor. Consider the total price buyers
+                  will pay too.
+                </p>
+                <label>
+                  <p>Price *</p>
+                  {submitted && validations.price && (<p className='create__product__error'>{validations.price}</p>)}
+                  <input
+                    type="text"
+                    name="price"
+                    value={price}
+                    placeholder="Price (USD)"
+                    className="form-input"
+                    onChange={(e) => setPrice(e.target.value)}
+                  />
+                </label>
+                <label>
+                  <p>Stock *</p>
+                  {submitted && validations.stock && (<p className='create__product__error'>{validations.stock}</p>)}
+                  <input
+                    type="text"
+                    name="stock"
+                    value={stock}
+                    placeholder="Stock"
+                    className="form-input"
+                    onChange={(e) => setStock(e.target.value)}
+                  />
+                </label>
+            </div>
+            <h2>Photos</h2>
+            <p>
+              Choose 1 Preview Photo to represent your image. You can add
+              additional images to your listing later.
+            </p>
+            <label>
+              <p>Preview Image *</p>
+              {submitted && validations.previewImg && (<p className='create__product__error'>{validations.previewImg}</p>)}
+              <input
+                type="text"
+                name="previewImg"
+                value={previewImg}
+                placeholder="Preview Img"
+                className="form-input"
+                onChange={(e) => setPreviewImg(e.target.value)}
+              />
+            </label>
+            <div className="form-button-div">
+                <button className="submit-form-btn">Create Listing</button>
+            </div>
+          </div>
       </form>
-    </div>
   );
 }
 

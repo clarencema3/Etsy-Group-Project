@@ -5,12 +5,12 @@ import { fetchSellersProducts } from "../../store/products";
 import OpenModalButton from "../OpenModalButton";
 import "./SellersProducts.css"
 import { useModal } from "../../context/Modal";
+import DeleteProductModal from "./deleteProductModal";
 
 const SellersProducts = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user)
   const sellerProducts = useSelector(state => state.products.sellerProducts)
-  const { closeModal } = useModal();
   // const products = useSelector(state => state.products.products)
   // console.log("products from sellers products", products)
   // const sellersProduct = useSelector(state => state.products.products && Object.values(state.products.products).filter(productItem => {
@@ -19,14 +19,19 @@ const SellersProducts = () => {
 
   useEffect(() => {
     dispatch(fetchSellersProducts(user && user.id))
-  }, [dispatch])
+  }, [dispatch, sellerProducts])
 
   if (!sellerProducts) {
     return <div>Loading...</div>
   }
 
   const sellerProductsArr = Object.values(sellerProducts)
-  console.log("seller products array", sellerProductsArr)
+
+  const allSellersProductsId = sellerProductsArr.map(product => (
+    product.id
+  ))
+
+  console.log("seller products id", allSellersProductsId)
 
   const userLoggedIn = () => {
     if (!user) {
@@ -35,14 +40,6 @@ const SellersProducts = () => {
       )
     }
   }
-
-
-
-  // const sellersProduct = Object.values(products).filter(productItem => {
-  //   return productItem.seller_id === user.id
-  // })
-
-
 
   return (
     <div className="white-space">
@@ -83,10 +80,7 @@ const SellersProducts = () => {
                 <OpenModalButton
                   buttonText="Remove"
                   modalComponent={
-                    <>
-                      <h2>Confirm Delete</h2>
-                      <p>Are you sure you want to remove this spot from the listings?</p>
-                    </>
+                    <DeleteProductModal id={sellersProduct.id} />
                   }
                 />
               </div>

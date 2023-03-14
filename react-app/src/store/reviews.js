@@ -104,7 +104,7 @@ const reviewsReducer = (state = initialState, action) => {
       console.log('new state in reducer', newState)
       console.log('action in reducer', action)
       newState.reviews = { ...state.reviews }
-      newState.reviews[action.review.id] = action.review
+      newState.reviews['review'] = action.review
       return newState
     case DELETE_REVIEW:
       newState.reviews = { ...state.reviews }

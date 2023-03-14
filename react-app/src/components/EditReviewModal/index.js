@@ -8,18 +8,18 @@ const EditReviewModal = ({ reviews, user, productId }) => {
   const dispatch = useDispatch()
   const userId = user?.id;
   const currentReview = reviews.find((review) => review?.user_id === userId);
-  const [rating, setRating] = useState(currentReview.rating);
-  const [review, setReview] = useState(currentReview.review);
+  const [rating, setRating] = useState(currentReview?.rating);
+  const [review, setReview] = useState(currentReview?.review);
   const { closeModal } = useModal();
 
 
-  const confirm = (e) => {
+  const confirm = async (e) => {
     e.preventDefault()
     
     currentReview.review = review
     currentReview.rating= rating
 
-    dispatch(editReview(currentReview))
+    await dispatch(editReview(currentReview))
     dispatch(fetchSingleProduct(productId))
     closeModal()
   }

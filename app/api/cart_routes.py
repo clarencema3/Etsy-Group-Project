@@ -43,26 +43,28 @@ def add_cart_item():
 @cart_routes.route('/', methods=["PUT"])
 def edit_cart_item():
     res = request.get_json()
-    # print("res \n\n\n\n\n\n", res)
-    current_cart_item = CartItem.query.filter_by(
-        product_id=res["product_id"], user_id=res["user_id"])
-    if current_cart_item[0]:
-        current_cart_item[0].quantity = res["quantity"]
+
+    current_cart_item = CartItem.query.get(res["id"])
+
+    if current_cart_item:
+        current_cart_item.quantity = res["quantity"]
         db.session.commit()
 
-    return current_cart_item[0].to_dict()
+    return current_cart_item.to_dict()
 
 
 @cart_routes.route('/', methods=["DELETE"])
 def delete_cart_item():
     res = request.get_json()
-    print("res to delete $$$$$$$$$$$$$$$$$$$$$$ \n\n\n\n",
-          res)
-    delete_cart_item = CartItem.query.filter_by(
-        product_id=res["product_id"], user_id=res["user_id"])
+    # print("res to delete $$$$$$$$$$$$$$$$$$$$$$ \n\n\n\n",
+    #       res)
+    # delete_cart_item = CartItem.query.filter_by(
+    #     product_id=res["product_id"], user_id=res["user_id"])
+
+    delete_cart_item = CartItem.query.get(res["id"])
 
     print("item to delete $$$$$$$$$$$$$$$$$$$$$$ \n\n\n\n",
-          list(delete_cart_item))
+          delete_cart_item.to_dict())
 
     # return {"Response": f"Successfully deleted item."}
     if delete_cart_item:

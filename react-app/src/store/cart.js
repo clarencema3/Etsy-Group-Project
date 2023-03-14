@@ -109,13 +109,13 @@ const cartReducer = (state = initialState, action) => {
 
     case EDIT_CART_ITEM:
       newState.cart = { ...state.cart }
-      newState.cart[action.cartItem.product_id].quantity = action.cartItem.quantity
+      newState.cart[action.cartItem.id].quantity = action.cartItem.quantity
 
       return newState
 
     case DELETE_CART_ITEM:
       newState.cart = { ...state.cart }
-      delete newState.cart[action.item_info.product_id]
+      delete newState.cart[action.item_info.id]
       return newState
 
     default:

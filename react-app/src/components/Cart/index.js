@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 import { editCartItem, fetchCartItems, deleteCartItem } from "../../store/cart";
+import "./Cart.css"
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -32,8 +33,9 @@ const Cart = () => {
     // console.log("e from changeHanlder", e)
     // console.log("item from inside ChangeHandler", item)
     const item_info = {
+      id: item.id,
       user_id: user.id,
-      product_id: item.id,
+      product_id: item.product_id,
       quantity: Number(e.target.value),
     };
 
@@ -45,8 +47,9 @@ const Cart = () => {
   const deleteOnClickHandler = async (e, item) => {
     e.preventDefault()
     const item_info = {
+      id: item.id,
       user_id: user.id,
-      product_id: item.id,
+      product_id: item.product_id,
     };
 
     await dispatch(deleteCartItem(item_info))
@@ -57,7 +60,7 @@ const Cart = () => {
       {cartArr?.map((item) => (
         <div className="cart-item-parent-div">
           <div className="feature-img">
-            <img src={item.product.preview_img} alt="product img" />
+            <img className="cart-img" src={item.product.preview_img} alt="product img" />
           </div>
           <div className="product-name-and-img">
             <p>{item.product.product_name}</p>

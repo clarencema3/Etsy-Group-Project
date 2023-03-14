@@ -6,6 +6,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 
 cart_routes = Blueprint('cart', __name__)
 
+
 @cart_routes.route('/')
 def get_all_cart_items():
     user = current_user.to_dict()
@@ -19,8 +20,8 @@ def get_all_cart_items():
         item_dict['product'] = item.products.to_dict()
         cart_items_arr.append(item_dict)
 
-
     return cart_items_arr
+
 
 @cart_routes.route('/', methods=["POST"])
 def add_cart_item():
@@ -38,18 +39,35 @@ def add_cart_item():
         db.session.commit()
         return cart_item.to_dict()
 
+
 @cart_routes.route('/', methods=["PUT"])
 def edit_cart_item():
     res = request.get_json()
-    # print("res \n\n\n\n\n\n", res)
-    current_cart_item = CartItem.query.filter_by(product_id=res["product_id"], user_id=res["user_id"])
-    print("current_cart_item from backend \n\n\n\n $$$$$$$$$", current_cart_item[0])
-    if current_cart_item[0]:
-        current_cart_item[0].quantity = res["quantity"]
+
+    current_cart_item = CartItem.query.get(res["id"])
+
+    if current_cart_item:
+        current_cart_item.quantity = res["quantity"]
         db.session.commit()
 
-    return current_cart_item[0].to_dict()
+    return current_cart_item.to_dict()
 
-@cart_routes.route('/<int:id>', methods=["DELETE"])
-def delete_cart_item(id):
-    pass
+
+@cart_routes.route('/', methods=["DELETE"])
+def delete_cart_item():
+    res = request.get_json()
+    # print("res to delete $$$$$$$$$$$$$$$$$$$$$$ \n\n\n\n",
+    #       res)
+    # delete_cart_item = CartItem.query.filter_by(
+    #     product_id=res["product_id"], user_id=res["user_id"])
+
+    delete_cart_item = CartItem.query.get(res["id"])
+
+    print("item to delete $$$$$$$$$$$$$$$$$$$$$$ \n\n\n\n",
+          delete_cart_item.to_dict())
+
+    # return {"Response": f"Successfully deleted item."}
+    if delete_cart_item:
+        db.session.delete(delete_cart_item)
+        db.session.commit()
+        return {"Response": f"Successfully deleted item."}

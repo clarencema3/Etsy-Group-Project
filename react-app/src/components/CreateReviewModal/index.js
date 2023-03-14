@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { postReview } from "../../store/revews";
@@ -23,18 +23,19 @@ const CreateReviewModal = ({ productId, user }) => {
 
     await dispatch(postReview(newReview))
     dispatch(fetchSingleProduct(productId))
+    closeModal()
   }
 
 
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         <textarea value={review} onChange={(e) => setReview(e.target.value)}>
         </textarea>
         <input value={rating} onChange={(e) => setRating(e.target.value)}>
         </input>
-        <button type="submit" onClick={closeModal}>Post a review</button>
+        <button type="submit" onClick={handleSubmit}>Post a review</button>
       </form>
     </div>
   )

@@ -73,7 +73,7 @@ const Reviews = ({ product, user }) => {
                 <OpenModalButton
                   buttonText="Delete"
                   modalComponent={
-                    <h1>Not yet functional Delete</h1>
+                    <DeleteReviewModal reviews={product.reviews} user={user} productId={product.id}/>
                   } />
               </div>
             </>

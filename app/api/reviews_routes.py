@@ -26,3 +26,12 @@ def create_new_review():
         db.session.add(review)
         db.session.commit()
         return review.to_dict()
+
+
+@reviews_routes.route("/<int:id>", methods=["DELETE"])
+def delete_review(id):
+    review = Review.query.get(id)
+    if review: 
+        db.session.delete(review)
+        db.session.commit()
+        return {"Response": f"Successfully deleted item."}

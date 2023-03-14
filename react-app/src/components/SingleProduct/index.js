@@ -6,6 +6,7 @@ import './SingleProduct.css'
 import { clearState } from "../../store/products";
 import OpenModalButton from "../OpenModalButton";
 import { createCartItem } from "../../store/cart";
+import Reviews from "../Reviews/reviews";
 
 
 const SingleProduct = () => {
@@ -13,7 +14,7 @@ const SingleProduct = () => {
   const { productId } = useParams()
   const user = useSelector((state) => state.session.user)
   const product = useSelector(state => state.products.product)
-  const user = useSelector(state => state.session.user)
+  // const user = useSelector(state => state.session.user)
   const [quantity, setQuantity] = useState(0)
 
 
@@ -48,44 +49,44 @@ const SingleProduct = () => {
 
   if (!product) return <h1>loading</h1>
 
-  const reviews = product?.reviews
-  const numberOfReviews = () => {
-    if (reviews && reviews.length === 1) {
-      return (
-        <div>{reviews && reviews.length} review <i className="fas fa-star" /></div>
-      )
-    } else if (reviews && reviews.length < 1) {
-      return (
-        <div>
-          Be the first to post a review!
-        </div>
-      )
-    } else {
-      return (
-        <div>{reviews && reviews.length} reviews <i className="fas fa-star" /></div>
-      )
-    }
-  }
+  // const reviews = product?.reviews
+  // const numberOfReviews = () => {
+  //   if (reviews && reviews.length === 1) {
+  //     return (
+  //       <div>{reviews && reviews.length} review <i className="fas fa-star" /></div>
+  //     )
+  //   } else if (reviews && reviews.length < 1) {
+  //     return (
+  //       <div>
+  //         Be the first to post a review!
+  //       </div>
+  //     )
+  //   } else {
+  //     return (
+  //       <div>{reviews && reviews.length} reviews <i className="fas fa-star" /></div>
+  //     )
+  //   }
+  // }
 
-  const compareRev = reviews?.find(review => review?.user_id === user?.id)
+  // const compareRev = reviews?.find(review => review?.user_id === user?.id)
 
-  const reviewButton = () => {
-    if (user && user?.id !== product?.user?.id && user.id !== compareRev?.user_id) {
-      return (
-        <div>
-          <OpenModalButton
-            buttonText={"Post Your Review!"}
-            modalComponent={
-              <div>
-                Post your review!
-              </div>
-            }
-          ></OpenModalButton>
+  // const reviewButton = () => {
+  //   if (user && user?.id !== product?.user?.id && user.id !== compareRev?.user_id) {
+  //     return (
+  //       <div>
+  //         <OpenModalButton
+  //           buttonText={"Post Your Review!"}
+  //           modalComponent={
+  //             <div>
+  //               Post your review!
+  //             </div>
+  //           }
+  //         ></OpenModalButton>
 
-        </div>
-      )
-    }
-  }
+  //       </div>
+  //     )
+  //   }
+  // }
 
   return product && (
 
@@ -122,7 +123,8 @@ const SingleProduct = () => {
           </div>
         </div>
       </div>
-      <div className="reviewsContainer white-space">
+      <Reviews />
+      {/* <div className="reviewsContainer white-space">
         <div className="numberOfreviews">
           {numberOfReviews()}
         </div>
@@ -156,7 +158,7 @@ const SingleProduct = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

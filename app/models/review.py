@@ -26,6 +26,7 @@ class Review(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'product_id': self.product_id,
+            'owner_name': self.user.username,
             'rating': self.rating,
             'review': self.review,
             'timestamp': self.timestamp,

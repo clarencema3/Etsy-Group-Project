@@ -19,10 +19,7 @@ def get_single_product(id):
     product = Product.query.get(id)
     productDictionary = product.to_dict()
     productDictionary['user'] = product.user.to_dict()
-    print("PRODUCT dictionary",productDictionary)
-
-    reviews = Review.query.filter_by(product_id=id).all()
-    productDictionary['reviews'] = [review.to_dict() for review in reviews]
+    productDictionary['reviews'] = [review.to_dict() for review in product.reviews]
     return productDictionary
 
 

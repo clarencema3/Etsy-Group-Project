@@ -12,6 +12,7 @@ from .seeds import seed_commands
 from .config import Config
 from .api.products_routes import products_routes
 from .api.cart_routes import cart_routes
+from .api.reviews_routes import reviews_routes
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -33,6 +34,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(products_routes, url_prefix='/api/products')
 app.register_blueprint(cart_routes, url_prefix='/api/cart')
+app.register_blueprint(reviews_routes, url_prefix='/api/reviews')
 db.init_app(app)
 Migrate(app, db)
 

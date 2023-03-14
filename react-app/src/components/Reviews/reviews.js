@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts, fetchSingleProduct } from "../../store/products";
-import { useParams } from "react-router-dom";
-import { clearState } from "../../store/products";
+import React from "react";
 import OpenModalButton from "../OpenModalButton";
-import { createCartItem } from "../../store/cart";
+import CreateReviewModal from "../CreateReviewModal";
+import DeleteReviewModal from "../DeleteReviewModal";
+import EditReviewModal from "../EditReviewModal";
 
-const Reviews = () => {
-  const product = useSelector(state => state.products.product)
-  const users = useSelector((state) => state.session.user)
-
+const Reviews = ({ product, user }) => {
   const reviews = product?.reviews
-
+  console.log("reviews from reviews", reviews)
   const numberOfReviews = () => {
     if (reviews && reviews.length === 1) {
       return (
@@ -30,21 +25,18 @@ const Reviews = () => {
     }
   }
 
-  const compareRev = reviews?.find(review => review?.user_id === users?.id)
-  console.log("compare review from review", compareRev)
+  const compareRev = reviews?.find(review => review?.user_id === user?.id)
 
 
 
   const reviewButton = () => {
-    if (users && users?.id !== product?.user?.id && users.id !== compareRev?.user_id) {
+    if (user && user?.id !== product?.user?.id && user.id !== compareRev?.user_id) {
       return (
         <div>
           <OpenModalButton
             buttonText={"Post Your Review!"}
             modalComponent={
-              <div>
-                Post your review!
-              </div>
+              <CreateReviewModal productId={product.id} user={user} />
             }
           ></OpenModalButton>
 

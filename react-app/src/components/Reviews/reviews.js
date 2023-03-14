@@ -6,7 +6,7 @@ import EditReviewModal from "../EditReviewModal";
 
 const Reviews = ({ product, user }) => {
   const reviews = product?.reviews
-  console.log("reviews from reviews", reviews)
+  console.log("USER IN PROPS", user)
   const numberOfReviews = () => {
     if (reviews && reviews.length === 1) {
       return (
@@ -64,17 +64,21 @@ const Reviews = ({ product, user }) => {
                   <strong>{review.owner_name}</strong>
                 </div>
               </div>
+              {user.id === review.user_id ? 
+                <div>
+                  <OpenModalButton
+                    buttonText="Edit"
+                    modalComponent={
+                      <EditReviewModal reviews={product.reviews} user={user} productId={product.id} />
+                    } />
+                  <OpenModalButton
+                    buttonText="Delete"
+                    modalComponent={
+                      <DeleteReviewModal reviews={product.reviews} user={user} productId={product.id} />
+                    } /> 
+                </div>
+                : null}
               <div>
-                <OpenModalButton
-                  buttonText="Edit"
-                  modalComponent={
-                    <EditReviewModal reviews={product.reviews} user={user} productId={product.id} />
-                  } />
-                <OpenModalButton
-                  buttonText="Delete"
-                  modalComponent={
-                    <DeleteReviewModal reviews={product.reviews} user={user} productId={product.id} />
-                  } />
               </div>
             </>
           ))}

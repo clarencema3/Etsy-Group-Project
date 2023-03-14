@@ -31,7 +31,7 @@ def create_new_review():
 @reviews_routes.route("/<int:id>", methods=["DELETE"])
 def delete_review(id):
     review = Review.query.get(id)
-    if review: 
+    if review:
         db.session.delete(review)
         db.session.commit()
         return {"Response": f"Successfully deleted item."}
@@ -40,10 +40,11 @@ def delete_review(id):
 @reviews_routes.route("/<int:id>", methods=["PUT"])
 def edit_review(id):
     review = Review.query.get(id)
+    print("review in the back end \n\n\n\n\n", review.to_dict())
     res = request.get_json()
     print('request from backend route \n\n\n\n\n' , res)
-    if (review): 
-        review.rating=res["rating"],
-        review.review=res["review"],
-        db.session.commit()
-    return review.to_dict()
+    if review:
+       review.rating=res["rating"]
+       review.review=res["review"]
+       db.session.commit()
+       return review.to_dict()

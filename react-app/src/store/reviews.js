@@ -41,45 +41,47 @@ export const removeReview = (reviewId) => {
 }
 
 export const deleteReview = (reviewId) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${reviewId}`, {
-      method: 'DELETE'
-    })
+  const response = await fetch(`/api/reviews/${reviewId}`, {
+    method: 'DELETE'
+  })
 
-    if (response.ok) {
-      dispatch(removeReview(reviewId))
-    }
+  if (response.ok) {
+    dispatch(removeReview(reviewId))
+  }
 }
 
 export const postReview = (review) => async (dispatch) => {
-    const response = await fetch('/api/reviews/', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(review)
-    })
-    if (response.ok) {
-      const review = await response.json();
-      const normalizedData = {}
-      normalizedData[review.id] = review
-      dispatch(createReview(normalizedData))
-    }
+  const response = await fetch('/api/reviews/', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(review)
+  })
+  if (response.ok) {
+    const review = await response.json();
+    const normalizedData = {}
+    normalizedData[review.id] = review
+    dispatch(createReview(normalizedData))
+  }
 }
 
 export const editReview = (review) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${review.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(review)
-    })
+  const response = await fetch(`/api/reviews/${review.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(review)
+  })
 
-    if (response.ok) {
-      const review = await response.json();
-      console.log('review in thunk', review)
-      dispatch(updateReview(review))
-    }
+  if (response.ok) {
+    const review = await response.json();
+    const normalizedData = {}
+    normalizedData[review.id] = review
+    console.log('review in thunk', review)
+    dispatch(updateReview(normalizedData))
+  }
 }
 
 // export const fetchReviews = (id) => async (dispatch) => {

@@ -4,7 +4,7 @@
 // export const GET_SINGLE_REVIEW = "review"
 export const CREATE_REVIEW = "review/new"
 // export const UPDATE_REVIEW = "review/edit"
-// export const DELETE_REVIEW = "review/delete"
+export const DELETE_REVIEW = "review/delete"
 
 // export const getReviews = (reviews) => {
 //   return {
@@ -33,12 +33,22 @@ export const createReview = (review) => {
 //   }
 // }
 
-// export const deleteReview = (reviewId) => {
-//   return {
-//     type: DELETE_REVIEW,
-//     reviewId
-//   }
-// }
+export const removeReview = (reviewId) => {
+  return {
+    type: DELETE_REVIEW,
+    reviewId
+  }
+}
+
+export const deleteReview = (reviewId) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${reviewId}`, {
+      method: 'DELETE'
+    })
+
+    if (response.ok) {
+      dispatch(removeReview(reviewId))
+    }
+}
 
 export const postReview = (review) => async (dispatch) => {
   const response = await fetch('/api/reviews/', {
@@ -52,7 +62,6 @@ export const postReview = (review) => async (dispatch) => {
     const review = await response.json();
     const normalizedData = {}
     normalizedData[review.id] = review
-    console.log('normalized data in thunk', normalizedData)
     dispatch(createReview(normalizedData))
   }
 }
@@ -73,9 +82,11 @@ const initialState = {}
 const reviewsReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
+    case DELETE_REVIEW:
+      newState.reviews = { ...state.reviews }
+      delete newState.reviews[action.reviewId]
+      return newState
     case CREATE_REVIEW:
-      console.log("new state in reducer", newState)
-      console.log("action in reducer", action.review)
       newState.reviews = { ...state.reviews }
       newState.reviews['review'] = action.review
       return newState

@@ -1,5 +1,6 @@
 from app.models import db, Purchase, SCHEMA, environment
 from sqlalchemy.sql import text
+from datetime import datetime
 
 
 def seed_purchases():
@@ -8,7 +9,8 @@ def seed_purchases():
         product_id=1,
         quantity=10,
         order_id=1,
-        total_price=99.99
+        total_price=99.99,
+        date=datetime.now()
     )
 
     db.session.add(
@@ -19,7 +21,8 @@ def seed_purchases():
 
 def undo_purchases():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.purchases RESTART IDENTITY CASCADE;")
+        db.session.execute(
+            f"TRUNCATE table {SCHEMA}.purchases RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM purchases")
 

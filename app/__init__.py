@@ -12,6 +12,7 @@ from .seeds import seed_commands
 from .config import Config
 from .api.products_routes import products_routes
 from .api.cart_routes import cart_routes
+from .api.order_routes import order_routes
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -33,6 +34,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(products_routes, url_prefix='/api/products')
 app.register_blueprint(cart_routes, url_prefix='/api/cart')
+app.register_blueprint(order_routes, url_prefix='/api/orders')
 db.init_app(app)
 Migrate(app, db)
 
@@ -72,9 +74,9 @@ def api_help():
     Returns all API routes and their doc strings
     """
     acceptable_methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
-    route_list = { rule.rule: [[ method for method in rule.methods if method in acceptable_methods ],
-                    app.view_functions[rule.endpoint].__doc__ ]
-                    for rule in app.url_map.iter_rules() if rule.endpoint != 'static' }
+    route_list = {rule.rule: [[method for method in rule.methods if method in acceptable_methods],
+                              app.view_functions[rule.endpoint].__doc__]
+                  for rule in app.url_map.iter_rules() if rule.endpoint != 'static'}
     return route_list
 
 

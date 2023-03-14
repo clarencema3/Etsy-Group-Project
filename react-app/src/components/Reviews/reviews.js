@@ -68,12 +68,12 @@ const Reviews = ({ product, user }) => {
                 <OpenModalButton
                   buttonText="Edit"
                   modalComponent={
-                    <h1>Not yet functional Edit</h1>
+                    <EditReviewModal reviews={product.reviews} user={user} productId={product.id} />
                   } />
                 <OpenModalButton
                   buttonText="Delete"
                   modalComponent={
-                    <DeleteReviewModal reviews={product.reviews} user={user} productId={product.id}/>
+                    <DeleteReviewModal reviews={product.reviews} user={user} productId={product.id} />
                   } />
               </div>
             </>

@@ -8,6 +8,7 @@ import SingleProduct from "./components/SingleProduct";
 import NewProductForm from "./components/NewProductForm";
 import SellersProducts from "./components/SellersProducts";
 import Cart from "./components/Cart";
+import Orders from "./components/Orders";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path="/cart">
             <Cart />
+          </Route>
+          <Route path="/orders">
+            <Orders />
           </Route>
         </Switch>
       )}

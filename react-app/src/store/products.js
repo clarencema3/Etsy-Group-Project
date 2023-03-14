@@ -86,15 +86,11 @@ export const fetchSellersProducts = (userId) => async (dispatch) => {
       return productItem.seller_id === userId
     })
     data.forEach((product) => (normalizedData[product.id] = product));
-    // normalizedData = Object.values(normalizedData).filter(productItem => {
-    //   return productItem.seller_id === userId
-    // })
     dispatch(getSellerProducts(normalizedData));
   }
 }
 
 export const addNewProduct = (newProduct) => async (dispatch) => {
-  console.log("reached addNewProduct Thunk", newProduct)
   const response = await fetch(`/api/products/`, {
     method: "POST",
     headers: {
@@ -105,15 +101,12 @@ export const addNewProduct = (newProduct) => async (dispatch) => {
 
   if (response.ok) {
     const details = await response.json();
-    console.log("inside thunk response", details)
     dispatch(addProduct(details));
-
     return details;
   }
 };
 
 export const deleteProduct = (productId) => async (dispatch) => {
-  console.log('product id passed to thunk', productId)
   const response = await fetch(`/api/products/${productId}`, {
     method: "DELETE",
   });
@@ -152,8 +145,6 @@ const productsReducer = (state = initialState, action) => {
       delete newState.sellerProducts[action.productId]
       return newState;
     case EDIT_PRODUCT:
-      console.log("newstate from reducer", newState)
-      console.log("action from reducer", action)
       newState.sellerProducts = { ...state.sellerProducts }
       newState.sellerProducts[action.product.id] = action.product
       return newState;

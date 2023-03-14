@@ -15,6 +15,7 @@ class Purchase(db.Model):
     quantity = db.Column(db.Integer, nullable=False)
     order_id = db.Column(db.Integer, nullable=False)
     total_price = db.Column(db.Float, nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
 
     # relationships
     user = db.relationship("User", back_populates="purchases")
@@ -28,4 +29,5 @@ class Purchase(db.Model):
             'quantity': self.quantity,
             'order_id': self.order_id,
             'total_price': self.total_price,
+            'date': self.date
         }

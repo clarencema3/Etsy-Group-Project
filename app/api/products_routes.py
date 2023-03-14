@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db, Product
+from app.models import User, db, Product, Review
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from app.forms import ProductForm
@@ -19,6 +19,10 @@ def get_single_product(id):
     product = Product.query.get(id)
     productDictionary = product.to_dict()
     productDictionary['user'] = product.user.to_dict()
+    print("PRODUCT dictionary",productDictionary)
+
+    reviews = Review.query.filter_by(product_id=id).all()
+    productDictionary['reviews'] = [review.to_dict() for review in reviews]
     return productDictionary
 
 

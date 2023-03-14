@@ -4,14 +4,19 @@ import { fetchProducts, fetchSingleProduct } from "../../store/products";
 import { useParams } from "react-router-dom";
 import './SingleProduct.css'
 import { clearState } from "../../store/products";
+import OpenModalButton from "../OpenModalButton";
 import { createCartItem } from "../../store/cart";
+import Reviews from "../Reviews/reviews";
+
 
 const SingleProduct = () => {
   const dispatch = useDispatch()
   const { productId } = useParams()
+  const user = useSelector((state) => state.session.user)
   const product = useSelector(state => state.products.product)
-  const user = useSelector(state => state.session.user)
+  // const user = useSelector(state => state.session.user)
   const [quantity, setQuantity] = useState(0)
+
 
   const maxQuantity = [];
   for (let i = 1; i <= product?.stock; i++) {
@@ -43,6 +48,45 @@ const SingleProduct = () => {
 
 
   if (!product) return <h1>loading</h1>
+
+  // const reviews = product?.reviews
+  // const numberOfReviews = () => {
+  //   if (reviews && reviews.length === 1) {
+  //     return (
+  //       <div>{reviews && reviews.length} review <i className="fas fa-star" /></div>
+  //     )
+  //   } else if (reviews && reviews.length < 1) {
+  //     return (
+  //       <div>
+  //         Be the first to post a review!
+  //       </div>
+  //     )
+  //   } else {
+  //     return (
+  //       <div>{reviews && reviews.length} reviews <i className="fas fa-star" /></div>
+  //     )
+  //   }
+  // }
+
+  // const compareRev = reviews?.find(review => review?.user_id === user?.id)
+
+  // const reviewButton = () => {
+  //   if (user && user?.id !== product?.user?.id && user.id !== compareRev?.user_id) {
+  //     return (
+  //       <div>
+  //         <OpenModalButton
+  //           buttonText={"Post Your Review!"}
+  //           modalComponent={
+  //             <div>
+  //               Post your review!
+  //             </div>
+  //           }
+  //         ></OpenModalButton>
+
+  //       </div>
+  //     )
+  //   }
+  // }
 
   return product && (
 
@@ -79,12 +123,42 @@ const SingleProduct = () => {
           </div>
         </div>
       </div>
-      <div className="reviews-div">
-        <div className="reviews">
-          render reviews component here
-
+      <Reviews />
+      {/* <div className="reviewsContainer white-space">
+        <div className="numberOfreviews">
+          {numberOfReviews()}
         </div>
-      </div>
+        <br />
+        {reviewButton()}
+        <div className="buyersContainer">
+          <div>
+            {reviews?.map(review => (
+              <>
+                <div><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /></div>
+                <div>{review.review}</div>
+                <div className="buyersLogoContainer">
+                  <img className="buyersImageLogo" src="https://i.etsystatic.com/25260451/r/il/402e7c/4387266595/il_794xN.4387266595_dh89.jpg" alt="logo" />
+                  <div className="buyersUserAndListingContainer">
+                    <strong>{product.user.username} {review.timestamp}</strong>
+                  </div>
+                </div>
+                <div>
+                  <OpenModalButton
+                    buttonText="Edit"
+                    modalComponent={
+                      <h1>Not yet functional Edit</h1>
+                    } />
+                  <OpenModalButton
+                    buttonText="Delete"
+                    modalComponent={
+                      <h1>Not yet functional Delete</h1>
+                    } />
+                </div>
+              </>
+            ))}
+          </div>
+        </div>
+      </div> */}
     </div>
   )
 }

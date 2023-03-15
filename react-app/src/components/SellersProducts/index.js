@@ -40,8 +40,8 @@ const SellersProducts = () => {
         <div className="sellersLogoContainer">
           <img className="sellerImageLogo" src="https://i.etsystatic.com/25260451/r/il/402e7c/4387266595/il_794xN.4387266595_dh89.jpg" alt="logo" />
           <div className="sellersUserAndListingContainer">
-            <strong>{user?.username}</strong>
-            <NavLink className="makeAListing" to={"/products/new"}>Make a Listing</NavLink>
+            <strong>{user?.username}'s Store</strong>
+            <NavLink className="makeAListing" to={"/products/new"}>+ Add a Product to your store</NavLink>
           </div>
         </div>
       </div>

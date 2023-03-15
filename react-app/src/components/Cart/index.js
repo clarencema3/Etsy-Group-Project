@@ -59,6 +59,32 @@ const Cart = () => {
   let cartItemsArr = Object.values(cartItems)
   console.log("cartItemsArr", cartItemsArr)
 
+  // calculates total quantity of items in cart
+  function cartQuantity(cartArr) {
+    let totalQuantity = 0
+    for (let item of cartArr) {
+      totalQuantity += item.quantity
+    }
+    return totalQuantity
+  }
+
+  let totalQuant = cartQuantity(cartArr)
+
+  console.log("totalQuant", totalQuant);
+
+  // calculates total price of all items in cart to display in summary box
+  function cartTotal(cartArr) {
+    let totalPrice = 0
+    for (let item of cartArr) {
+      let lineItem = item.quantity * item.product.price
+      totalPrice += lineItem
+    }
+    return totalPrice
+  }
+
+  let totalCartPrice = cartTotal(cartArr)
+  console.log("totalCartPrice", totalCartPrice)
+
   const purchaseClickHandler = async (e) => {
     e.preventDefault()
 
@@ -72,7 +98,7 @@ const Cart = () => {
       <div className="center-container">
         {/* <div className="full-page-container"> */}
         <div className="items-in-cart">
-          <h2>X Items in your cart</h2>
+          <h2>{totalQuant} items in your cart</h2>
         </div>
         <div className="full-cart-container">
           <div className="cart-items-container">
@@ -137,7 +163,7 @@ const Cart = () => {
               </div>
               <div className="summary-line-item">
                 <p>Item(s) Total</p>
-                <p>$99.99</p>
+                <p>${parseFloat(totalCartPrice).toFixed(2)}</p>
               </div>
               <div className="summary-line-item">
                 <p>Shipping</p>
@@ -145,7 +171,7 @@ const Cart = () => {
               </div>
               <div className="summary-line-item">
                 <p>Total</p>
-                <p>$99.99</p>
+                <p>${parseFloat(totalCartPrice).toFixed(2)}</p>
               </div>
               <button
                 onClick={purchaseClickHandler}

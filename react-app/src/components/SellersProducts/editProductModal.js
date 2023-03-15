@@ -2,17 +2,14 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { editProduct } from "../../store/products";
 
 const EditProductModal = ({ id }) => {
-  const history = useHistory();
   const dispatch = useDispatch()
   const { closeModal } = useModal()
   const sellerProducts = useSelector(state => state.products.sellerProducts)
   let currentProduct = sellerProducts[id]
-  console.log("current products from the editmodal", currentProduct)
-  // console.log("id from the editmodal", id)
+
   const [productName, setProductName] = useState(currentProduct.product_name);
   const [description, setDescription] = useState(currentProduct.description);
   const [price, setPrice] = useState(currentProduct.price);

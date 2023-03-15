@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { fetchSellersProducts } from "../../store/products";
 import OpenModalButton from "../OpenModalButton";
 import "./SellersProducts.css"
@@ -8,6 +8,7 @@ import DeleteProductModal from "./deleteProductModal";
 import EditProductModal from "./editProductModal";
 
 const SellersProducts = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user)
   const sellerProducts = useSelector(state => state.products.sellerProducts)
@@ -19,7 +20,7 @@ const SellersProducts = () => {
 
   useEffect(() => {
     dispatch(fetchSellersProducts(user?.id))
-  }, [dispatch])
+  }, [dispatch, user?.id])
 
   if (!sellerProducts) {
     return <div>Loading...</div>
@@ -28,7 +29,7 @@ const SellersProducts = () => {
   const sellerProductsArr = Object.values(sellerProducts)
 
   if (!user) {
-    return null
+    history.push('/')
   }
   
 
@@ -39,7 +40,7 @@ const SellersProducts = () => {
         <div className="sellersLogoContainer">
           <img className="sellerImageLogo" src="https://i.etsystatic.com/25260451/r/il/402e7c/4387266595/il_794xN.4387266595_dh89.jpg" alt="logo" />
           <div className="sellersUserAndListingContainer">
-            <strong>{user.username}</strong>
+            <strong>{user?.username}</strong>
             <NavLink className="makeAListing" to={"/products/new"}>Make a Listing</NavLink>
           </div>
         </div>
@@ -50,7 +51,7 @@ const SellersProducts = () => {
           <div>
             <NavLink to={`/products/${sellersProduct.id}`}>
               <div className="sellersProductCard " key={sellersProduct.id}>
-                <img src={sellersProduct.preview_img} />
+                <img src={sellersProduct.preview_img} alt='product'/>
               </div>
             </NavLink>
 

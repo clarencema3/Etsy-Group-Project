@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts, fetchSingleProduct } from "../../store/products";
+import { fetchSingleProduct } from "../../store/products";
 import { useParams } from "react-router-dom";
 import './SingleProduct.css'
 import { clearState } from "../../store/products";
-import OpenModalButton from "../OpenModalButton";
 import { createCartItem } from "../../store/cart";
 import Reviews from "../Reviews/reviews";
 
@@ -56,7 +55,7 @@ const SingleProduct = () => {
     <div className="page-container">
       <div className="product-div white-space">
         <div className="product-image-div">
-          <img src={product.preview_img} className='product-image'></img>
+          <img src={product.preview_img} className='product-image' alt='product'></img>
         </div>
         <div className="product-details-div">
           <div className="product-details">

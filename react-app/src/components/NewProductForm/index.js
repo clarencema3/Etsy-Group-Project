@@ -63,7 +63,7 @@ function NewProductForm() {
       setValidations({})
 
       let createdProduct = await dispatch(addNewProduct(newProduct));
-
+      console.log('created product after dispatch', createdProduct)
       if (createdProduct) {
         history.push(`/`);
       }

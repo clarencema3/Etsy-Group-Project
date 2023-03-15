@@ -5,7 +5,7 @@ import { deleteProduct, fetchSellersProducts } from "../../store/products";
 
 
 const DeleteProductModal = ({ id }) => {
-  console.log('product id passed in through seller product page', +id)
+  console.log('product id passed in through seller product page', id)
   const dispatch = useDispatch();
   // const user = useSelector((state) => state.session.user)
   const { closeModal } = useModal()

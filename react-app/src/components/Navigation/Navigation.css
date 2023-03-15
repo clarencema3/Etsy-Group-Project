@@ -21,6 +21,7 @@
   justify-content: space-between;
   height: 40px;
   align-items: center;
+  margin-top: 1%;
 }
 
 .nav-buttons {
@@ -46,6 +47,7 @@ div[class*="nav-buttons-"] {
   justify-content: center;
   align-items: center;
   padding: 5px 5px;
+  cursor: pointer;
 }
 
 .fa-user {
@@ -162,6 +164,7 @@ div[class*="nav-buttons-"] {
 
 .profile-dropdown-logout:hover {
   background-color: lightgray;
+  cursor: pointer;
 }
 
 .fa-sign-out-alt {

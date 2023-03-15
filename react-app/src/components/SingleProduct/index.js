@@ -54,14 +54,14 @@ const SingleProduct = () => {
   return product && (
 
     <div className="page-container">
-      <div className="product-div">
+      <div className="product-div white-space">
         <div className="product-image-div">
           <img src={product.preview_img} className='product-image'></img>
         </div>
         <div className="product-details-div">
           <div className="product-details">
             {product.stock <= 5 ? <strong className="low-stock">Only {product.stock} left</strong> : ""}
-            <p>${product.price}</p>
+            <p className="price-of-product">${Number(product.price).toFixed(2)}</p>
             <strong className="product-label">Product Name:</strong>
             <p>{product.product_name}</p>
             <strong className="product-label">Product Description:</strong>

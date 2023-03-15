@@ -29,8 +29,8 @@ export const fetchOrders = () => async (dispatch) => {
 
     if (response.ok) {
         const details = await response.json();
+        console.log(details)
         dispatch(getOrders(details))
-        return details
     }
 };
 

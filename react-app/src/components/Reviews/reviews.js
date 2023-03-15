@@ -3,10 +3,11 @@ import OpenModalButton from "../OpenModalButton";
 import CreateReviewModal from "../CreateReviewModal";
 import DeleteReviewModal from "../DeleteReviewModal";
 import EditReviewModal from "../EditReviewModal";
+import './Reviews.css'
 
 const Reviews = ({ product, user }) => {
   const reviews = product?.reviews
-  console.log("reviews from reviews", reviews)
+  console.log("reviews in reviews", reviews)
   const numberOfReviews = () => {
     if (reviews && reviews.length === 1) {
       return (
@@ -27,6 +28,96 @@ const Reviews = ({ product, user }) => {
 
   const compareRev = reviews?.find(review => review?.user_id === user?.id)
 
+  const showReviews = () => {
+    if (reviews?.length === 0) {
+      return (
+        <div></div>
+      )
+    } else {
+      return reviews?.map((review) => {
+        let rating
+        if (review.rating === 1) {
+          rating =
+            <span><
+              i className="fas fa-star" />
+            </span>
+        }
+        if (review.rating === 2) {
+          rating =
+            <div>
+              <i className="fas fa-star" />
+              <i className="fas fa-star" />
+            </div>
+        }
+        if (review.rating === 3) {
+          rating =
+            <div>
+              <i className="fas fa-star" />
+              <i className="fas fa-star" />
+              <i className="fas fa-star" />
+            </div>
+        }
+        if (review.rating === 4) {
+          rating =
+            <div>
+              <i className="fas fa-star" />
+              <i className="fas fa-star" />
+              <i className="fas fa-star" />
+              <i className="fas fa-star" />
+            </div>
+        }
+        if (review.rating === 5) {
+          rating =
+            <div>
+              <i className="fas fa-star" />
+              <i className="fas fa-star" />
+              <i className="fas fa-star" />
+              <i className="fas fa-star" />
+              <i className="fas fa-star" />
+            </div>
+        }
+
+        const editReviewButton = () => {
+          if (user.id === review.user_id)
+            return (
+              <>
+                <OpenModalButton
+                  buttonText="Edit"
+                  modalComponent={
+                    <EditReviewModal reviews={product.reviews} user={user} productId={product.id} />
+                  } />
+              </>
+            )
+        }
+        const reviewDeleteButton = () => {
+          if (user.id === review.user_id)
+            return (
+              <>
+                <OpenModalButton
+                  buttonText="Delete"
+                  modalComponent={
+                    <DeleteReviewModal reviews={product?.reviews} user={user} productId={product?.id} />
+                  } />
+              </>
+            )
+        }
+        return (
+          <>
+            {rating}
+            <div>{review.review}</div>
+            <div className="buyersLogoContainer">
+              <img className="buyersImageLogo" src="https://i.etsystatic.com/25260451/r/il/402e7c/4387266595/il_794xN.4387266595_dh89.jpg" alt="logo" />
+              <div className="buyersUserAndListingContainer">
+                <strong>{review.owner_name}</strong>
+              </div>
+            </div>
+            {editReviewButton()}
+            {reviewDeleteButton()}
+          </>
+        )
+      })
+    }
+  }
 
 
   const reviewButton = () => {
@@ -35,6 +126,7 @@ const Reviews = ({ product, user }) => {
         <div>
           <OpenModalButton
             buttonText={"Post Your Review!"}
+            modalClass={"create-review"}
             modalComponent={
               <CreateReviewModal productId={product.id} user={user} />
             }
@@ -54,9 +146,9 @@ const Reviews = ({ product, user }) => {
       {reviewButton()}
       <div className="buyersContainer">
         <div>
-          {reviews?.map(review => (
+          {/* {reviews?.map(review => (
             <>
-              <div><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /></div>
+              {showReviews()}
               <div>{review.review}</div>
               <div className="buyersLogoContainer">
                 <img className="buyersImageLogo" src="https://i.etsystatic.com/25260451/r/il/402e7c/4387266595/il_794xN.4387266595_dh89.jpg" alt="logo" />
@@ -64,20 +156,26 @@ const Reviews = ({ product, user }) => {
                   <strong>{review.owner_name}</strong>
                 </div>
               </div>
+              {user.id === review.user_id ?
+                <div> */}
+          {/* <OpenModalButton
+                    buttonText="Edit"
+                    modalComponent={
+                      <EditReviewModal reviews={product.reviews} user={user} productId={product.id} />
+                    } /> */}
+          {/* <OpenModalButton
+                    buttonText="Delete"
+                    modalComponent={
+                      <DeleteReviewModal reviews={product.reviews} user={user} productId={product.id} />
+                    } /> */}
+          {/* {showReviews()}
+                </div>
+                : null}
               <div>
-                <OpenModalButton
-                  buttonText="Edit"
-                  modalComponent={
-                    <h1>Not yet functional Edit</h1>
-                  } />
-                <OpenModalButton
-                  buttonText="Delete"
-                  modalComponent={
-                    <DeleteReviewModal reviews={product.reviews} user={user} productId={product.id}/>
-                  } />
               </div>
             </>
-          ))}
+          ))} */}
+          {showReviews()}
         </div>
       </div>
     </div>

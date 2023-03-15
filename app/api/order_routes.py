@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import Purchase, User
+from app.models import Purchase, User, db
 from flask_login import current_user
 from datetime import datetime
 
@@ -26,3 +26,25 @@ def get_all_orders():
             purchases[purchase_dict["order_id"]] = [purchase_dict]
 
     return purchases
+
+@order_routes.route("/", methods=["POST"])
+def create_new_order():
+    # user = current_user.to_dict()
+    # print("user from inside ORDER POST ROUTE \n\n\n\n", user)
+    res = request.get_json()
+    print("res from inside POST ORDER ROUTE\n\n\n\n\n", res)
+
+    purchase = Purchase(
+        user_id = res["user_id"],
+        product_id=res["product_id"],
+        order_id=res["id"],
+        quantity=res["quantity"],
+        total_price=0,
+        date=datetime.now(),
+    )
+
+    print("purchase created on backend???\n\n\n\n", purchase.to_dict())
+    db.session.add(purchase)
+    db.session.commit()
+
+    return purchase.to_dict()

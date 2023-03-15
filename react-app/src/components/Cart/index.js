@@ -69,6 +69,7 @@ const Cart = () => {
     return totalQuantity
   }
 
+
   let totalQuant = cartQuantity(cartArr)
 
   console.log("totalQuant", totalQuant);
@@ -93,9 +94,22 @@ const Cart = () => {
     let purchasedItems = await dispatch(createOrder(cartItemsArr))
     console.log("purchasedItems from click handler return,", purchasedItems)
     if (purchasedItems) {
+      for (let item of cartArr) {
+        dispatch(deleteCartItem(item));
+      }
+
       history.push(`/orders/success`);
     }
     return
+  }
+
+  if (totalQuant === 0) {
+    return (
+      <div className="center-container">
+        <h2>{totalQuant} items in your cart</h2>
+        <img src="https://i.pinimg.com/originals/2e/ac/fa/2eacfa305d7715bdcd86bb4956209038.png" />
+      </div>
+    );
   }
 
     return (
@@ -103,6 +117,9 @@ const Cart = () => {
         {/* <div className="full-page-container"> */}
         <div className="items-in-cart">
           <h2>{totalQuant} items in your cart</h2>
+        </div>
+        <div>
+
         </div>
         <div className="full-cart-container">
           <div className="cart-items-container">

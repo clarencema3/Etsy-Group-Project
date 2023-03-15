@@ -10,11 +10,11 @@ function SuccessfulPurchasePage() {
 
 
     return (
-        <div>
-            <div>
-                <h1>Order Successfully Placed</h1>
+        <div className="success-page-container">
+            <div className="success-message">
+                <h1>Order Successfully Placed!</h1>
                 <h3>View all your orders below:</h3>
-            </div>
+            </div >
             <div>
                 <Orders />
             </div>

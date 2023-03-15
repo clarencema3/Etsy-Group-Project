@@ -8,4 +8,4 @@ class ProductForm(FlaskForm):
     description = StringField('Description', validators=[DataRequired()])
     price = IntegerField('Price', validators=[DataRequired()])
     stock = IntegerField('Stock', validators=[DataRequired()])
-    p_img = StringField('P Image', validators=[DataRequired()])
+    preview_img = StringField('Preview Image', validators=[DataRequired()])

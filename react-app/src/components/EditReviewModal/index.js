@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useModal } from "../../context/Modal";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { editReview } from "../../store/reviews";
 import { fetchSingleProduct } from "../../store/products";
 import './EditReview.css'

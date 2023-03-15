@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
 import { deleteReview } from "../../store/reviews";

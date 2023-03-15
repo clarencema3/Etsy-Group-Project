@@ -20,15 +20,15 @@ const DeleteReviewModal = ({ reviews, user, productId }) => {
   };
 
   return (
-    <div className="delete-review-container">
+    <div className="delete-product_and_review-container">
       <h2>Confirm Delete</h2>
-      <p className="delete__question">
+      <p className="delete-question">
         Are you sure you want to delete this review?
       </p>
-      <button onClick={confirm} className="delete-review-button">
+      <button onClick={confirm} className="delete-product_and_review-button">
         Yes (Delete Review)
       </button>
-      <button onClick={closeModal} className="keep-review-button">
+      <button onClick={closeModal} className="keep-product_and_review-button">
         No (Keep Review)
       </button>
     </div>

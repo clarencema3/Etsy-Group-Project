@@ -1,4 +1,4 @@
-.delete-review-container {
+.delete-product_and_review-container {
     width: 30vw;
     height: 25vh;
     display: flex;
@@ -7,7 +7,7 @@
     justify-content: center;
 }
 
-.delete-review-button {
+.delete-product_and_review-button {
     margin-top: 10px;
     margin-bottom: 20px;
     width: 70%;
@@ -19,10 +19,14 @@
     cursor: pointer;
 }
 
-.keep-review-button {
+.keep-product_and_review-button {
     width: 70%;
     padding: 10px;
     border: 2px solid black;
     border-radius: 15px;
     cursor: pointer;
+}
+
+.delete-question {
+    margin: 20px;
 }

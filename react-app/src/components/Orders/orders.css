@@ -5,7 +5,7 @@
 
 .purch-card-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   width: 900px;
 }
@@ -15,6 +15,7 @@
   border-radius: 10px;
   box-shadow: 4px 4px 4px gray;
   width: 700px;
+  margin-bottom: 20px;
 }
 
 .purch-date-totalcost {
@@ -32,6 +33,7 @@
 
 .purch-img {
   width: 100px;
+  height: 100px;
   margin: 0px 10px;
   border-radius: 10px;
 }

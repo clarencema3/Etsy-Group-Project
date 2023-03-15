@@ -6,7 +6,7 @@ def seed_cart_items():
     cartItem1 = CartItem(
         user_id=1,
         product_id=1,
-        quantity=10
+        quantity=1
     )
 
     cartItem2 = CartItem(

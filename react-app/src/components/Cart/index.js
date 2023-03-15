@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Redirect, useHistory } from "react-router-dom";
 import { editCartItem, fetchCartItems, deleteCartItem } from "../../store/cart";
 import { createOrder } from "../../store/orders";
+import LoginFormModal from "../LoginFormModal";
+import SignupFormModal from "../SignupFormModal";
 import "./Cart.css"
 
 const Cart = () => {
@@ -17,9 +19,19 @@ const Cart = () => {
   }, [dispatch]);
 
 
-  if (!cartItems) return <h1>loading</h1>;
+  if (!user) {
+    return (
+      <div className="center-container">
+        <h1>Please log in to add items to cart</h1>
+        <LoginFormModal />
+      </div>
+    );
+  }
   console.log("cartItems from inside component", cartItems)
 
+  if (!cartItems) {
+    return null
+  }
   let cartArr = Object.values(cartItems);
 
   function getQuantity(quantity) {
@@ -102,6 +114,7 @@ const Cart = () => {
     }
     return
   }
+
 
   if (totalQuant === 0) {
     return (

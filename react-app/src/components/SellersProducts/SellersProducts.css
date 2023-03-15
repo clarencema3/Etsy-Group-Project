@@ -52,6 +52,16 @@
   display: flex;
   justify-content: space-between;
   padding-top: 17px;
+  width: 100%;
+}
+
+.sellers-product-name {
+  width: 60%;
+}
+
+.seller-product-btns {
+  
+
 }
 
 .sellersProductPrice {

@@ -3,6 +3,7 @@ import OpenModalButton from "../OpenModalButton";
 import CreateReviewModal from "../CreateReviewModal";
 import DeleteReviewModal from "../DeleteReviewModal";
 import EditReviewModal from "../EditReviewModal";
+import './Reviews.css'
 
 const Reviews = ({ product, user }) => {
   const reviews = product?.reviews
@@ -35,6 +36,7 @@ const Reviews = ({ product, user }) => {
         <div>
           <OpenModalButton
             buttonText={"Post Your Review!"}
+            modalClass={"create-review"}
             modalComponent={
               <CreateReviewModal productId={product.id} user={user} />
             }

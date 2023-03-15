@@ -7,6 +7,7 @@ import AllProducts from "./components/AllProducts"
 import SingleProduct from "./components/SingleProduct";
 import NewProductForm from "./components/NewProductForm";
 import SellersProducts from "./components/SellersProducts";
+import SuccessfulPurchasePage from "./components/SuccessfulPurchasePage"
 import Cart from "./components/Cart";
 import Orders from "./components/Orders";
 import { authenticate } from "./store/session";
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route path="/cart">
             <Cart />
+          </Route>
+          <Route path="/orders/success">
+            <SuccessfulPurchasePage />
           </Route>
           <Route path="/orders">
             <Orders />

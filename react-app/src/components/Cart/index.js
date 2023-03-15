@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 import { editCartItem, fetchCartItems, deleteCartItem } from "../../store/cart";
 import { createOrder } from "../../store/orders";
 import "./Cart.css"
@@ -9,6 +9,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cart);
   const user = useSelector((state) => state.session.user);
+  const history = useHistory();
 
 
   useEffect(() => {
@@ -91,6 +92,9 @@ const Cart = () => {
 
     let purchasedItems = await dispatch(createOrder(cartItemsArr))
     console.log("purchasedItems from click handler return,", purchasedItems)
+    if (purchasedItems) {
+      history.push(`/orders/success`);
+    }
     return
   }
 

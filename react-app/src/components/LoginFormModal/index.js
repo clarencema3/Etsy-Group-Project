@@ -21,9 +21,9 @@ function LoginFormModal() {
     }
   };
 
-  const handleDemoClick = async () => {
+  const handleDemoClick = () => {
     dispatch(login("demo@aa.io", "password"))
-    closeModal()
+    return closeModal()
   }
 
   return (
@@ -68,7 +68,7 @@ function LoginFormModal() {
             <button className="login-form-buttons-login" type="submit">Log In</button>
           </div>
           <div className="login-form-section-div">
-            <button className="login-form-buttons-demo" onClick={handleDemoClick}>Demo User</button>
+            <button className="login-form-buttons-demo" onClick={() => handleDemoClick()}>Demo User</button>
           </div>
         </form>
       </div>

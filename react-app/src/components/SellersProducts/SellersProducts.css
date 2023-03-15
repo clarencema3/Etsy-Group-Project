@@ -59,8 +59,14 @@
   width: 60%;
 }
 
-.seller-product-btns {
-  
+.makeAListing {
+  text-decoration: none;
+  font-size: 14pt;
+  color: black;
+  border: 2px solid black;
+  padding: 5px;
+  border-radius: 15px;
+  background-color: #E8F0FE;
 
 }
 
@@ -95,4 +101,38 @@
 
 .sellersUserAndListingContainer strong {
   font-size: 26px;
+}
+
+/* Delete product modal css (same css as delete reviews)*/
+.delete-product_and_review-container {
+  width: 30vw;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-product_and_review-button {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 70%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+
+.keep-product_and_review-button {
+  width: 70%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.delete-question {
+  margin: 20px;
 }

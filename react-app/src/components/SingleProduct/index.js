@@ -42,7 +42,7 @@ const SingleProduct = () => {
       quantity: Number(quantity)
     }
 
-    const newCartItem = await dispatch(createCartItem(item_info))
+    await dispatch(createCartItem(item_info))
   }
 
 

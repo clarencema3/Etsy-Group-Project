@@ -12,7 +12,7 @@ const ShowAllProducts = () => {
         if (user) {
             return user && (
                 <div className="welcomeBarLoggedIn">
-                    <h1>Welcome back, <NavLink to={`/products/current`}>{user.username}</NavLink></h1>
+                    <h1>Welcome back, <NavLink className='users-name' to={`/products/current`}>{user.username}</NavLink></h1>
                 </div>
             )
         } else {
@@ -42,7 +42,7 @@ const ShowAllProducts = () => {
                 {productsArr?.map((product) => (
 
                     <NavLink to={`/products/${product.id}`} className="productCard" key={product.id}>
-                        <img src={product.preview_img} alt="product image" />
+                        <img src={product.preview_img} alt="product" />
                         <div className="productPrice">${Number(product.price).toFixed(2)}</div>
                     </NavLink>
 

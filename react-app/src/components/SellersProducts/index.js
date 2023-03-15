@@ -31,11 +31,11 @@ const SellersProducts = () => {
   if (!user) {
     history.push('/')
   }
-  
+
 
   return (
     <div className="white-space">
-      
+
       <div className="sellerProductsPageContainer">
         <div className="sellersLogoContainer">
           <img className="sellerImageLogo" src="https://i.etsystatic.com/25260451/r/il/402e7c/4387266595/il_794xN.4387266595_dh89.jpg" alt="logo" />
@@ -61,6 +61,7 @@ const SellersProducts = () => {
               </div>
               <div className="seller-product-btns">
                 <OpenModalButton
+                  modalClass="sellerProductEditButton"
                   buttonText="Edit"
                   modalComponent={
                     <EditProductModal id={sellersProduct.id} />
@@ -68,6 +69,7 @@ const SellersProducts = () => {
                 />
 
                 <OpenModalButton
+                  modalClass="sellerProductRemoveButton"
                   buttonText="Remove"
                   modalComponent={
                     <DeleteProductModal id={sellersProduct.id} />

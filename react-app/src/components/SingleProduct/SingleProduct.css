@@ -7,11 +7,11 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    border: 2px solid black;
     border-radius: 15px;
     position: absolute;
     top: 0;
     left: 0;
+
 }
 
 .page-container {
@@ -29,12 +29,14 @@
 }
 
 .product-image-div {
+    box-shadow: 0px 0px 4px 3px rgba(165, 165, 165, 0.181);
+
     display: flex;
     justify-content: center;
     position: relative;
     aspect-ratio: 16/9;
-    overflow: hidden;
-    border-radius: 10px;
+    /* overflow: hidden; */
+    border-radius: 15px;
     margin-bottom: 2%;
 }
 

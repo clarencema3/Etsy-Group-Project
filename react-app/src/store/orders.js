@@ -37,14 +37,14 @@ export const fetchOrders = () => async (dispatch) => {
 export const createOrder = (cartItems) => async (dispatch) => {
 
     //loops through each item in cart and hits POST api for each
-    for (let item of cartItems) {
-        console.log("item from inside THUNK", item)
+    // for (let item of cartItems) {
+        console.log("cartItems from inside THUNK", cartItems)
         const response = await fetch(`/api/orders/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(item),
+          body: JSON.stringify(cartItems),
         });
 
 
@@ -55,7 +55,7 @@ export const createOrder = (cartItems) => async (dispatch) => {
         }
 
 
-    }
+    // }
 }
 
 const initialState = {};

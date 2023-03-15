@@ -55,10 +55,10 @@ const SellersProducts = () => {
             </NavLink>
 
             <div className="sellersProductNameEditRemove">
-              <div>
+              <div className="sellers-product-name">
                 {sellersProduct.product_name}
               </div>
-              <div>
+              <div className="seller-product-btns">
                 <OpenModalButton
                   modalClass="sellerProductEditButton"
                   buttonText="Edit"

@@ -33,11 +33,16 @@ def create_new_order():
     # print("user from inside ORDER POST ROUTE \n\n\n\n", user)
     res = request.get_json()
     print("res from inside POST ORDER ROUTE\n\n\n\n\n", res)
+
+    # GET most recent order number to increment by 1
+    recent_order = Purchase.query.order_by(Purchase.order_id.desc()).first()
+    print("recent_order \n\n\n\n\n", recent_order.to_dict())
+    r_order = recent_order.to_dict()
     for item in res:
         purchase = Purchase(
             user_id = item["user_id"],
             product_id=item["product_id"],
-            order_id=4,
+            order_id=r_order["order_id"]+1,
             quantity=item["quantity"],
             total_price=item["quantity"]*item["product"]["price"],
             date=datetime.now(),

@@ -78,7 +78,7 @@ const Reviews = ({ product, user }) => {
         }
 
         const editReviewButton = () => {
-          if (user.id === review.user_id)
+          if (user?.id === review?.user_id)
             return (
               <>
                 <OpenModalButton
@@ -90,7 +90,7 @@ const Reviews = ({ product, user }) => {
             )
         }
         const reviewDeleteButton = () => {
-          if (user.id === review.user_id)
+          if (user?.id === review?.user_id)
             return (
               <>
                 <OpenModalButton

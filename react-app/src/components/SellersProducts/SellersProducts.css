@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   margin: auto;
-  place-items: center;
+  /* place-items: center; */
   row-gap: 20px;
   column-gap: 20px;
   margin: 8px;
@@ -52,6 +52,29 @@
   display: flex;
   justify-content: space-between;
   padding-top: 17px;
+  width: 100%;
+}
+
+.sellers-product-name {
+  width: 50%;
+}
+
+.seller-product-btns {}
+
+.sellerProductEditButton {
+  background-color: transparent;
+  border: transparent;
+  text-decoration-line: underline;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.sellerProductRemoveButton {
+  background-color: transparent;
+  border: transparent;
+  text-decoration-line: underline;
+  cursor: pointer;
+
 }
 
 .sellersProductPrice {

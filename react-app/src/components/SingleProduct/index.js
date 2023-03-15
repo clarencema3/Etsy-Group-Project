@@ -69,7 +69,7 @@ const SingleProduct = () => {
           </div>
           <div className="product-seller-div">
             <p>Seller's Name: {product.user?.username}</p>
-            <p>Rating</p>
+            {/* <p>Rating</p> */}
             <p>Total Stock: {product.stock}</p>
             <p>Quantity</p>
             <select className="select-quantity" onChange={onChangeHandler}>

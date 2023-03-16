@@ -142,7 +142,7 @@
 
 /* Delete product modal css (same css as delete reviews)*/
 
-.delete-product_and_review-container {
+/* .delete-product_and_review-container {
   width: 30vw;
   height: 25vh;
   display: flex;
@@ -173,7 +173,7 @@
 
 .delete-question {
   margin: 20px;
-}
+} */
 
 
 /* edit product modal css */
@@ -230,4 +230,3 @@
 .edit-product-inputs {
   width: 100%;
 } */
-

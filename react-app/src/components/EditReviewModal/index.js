@@ -24,17 +24,6 @@ const EditReviewModal = ({ reviews, user, productId }) => {
   const handleClick = (value) => {
     setRating(value)
   }
-
-  useEffect(() => {
-    const errors = [];
-    if (review.length < 1) errors.push('Review is required')
-    if (rating < 1) errors.push('Star rating is required')
-    setErrors(errors);
-  }, [rating, review])
-
-  const handleClick = (value) => {
-    setRating(value)
-  }
   const confirm = async (e) => {
     e.preventDefault()
 

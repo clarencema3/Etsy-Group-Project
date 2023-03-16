@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import { fetchCartItems } from '../../store/cart';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
+	const cart = useSelector(state => state.cart.cart)
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(fetchCartItems())
+	}, [dispatch])
+
+	let cartArr = []
+	if (cart) {
+		cartArr = Object.values(cart)
+	}
+
+	let cartItemNum = 0
+	let cartItemNumDisplay
+	if (cartArr.length >= 1) {
+		for (let i = 0; i < cartArr.length; i++) {
+			cartItemNum += cartArr[i].quantity
+
+		}
+		cartItemNumDisplay = (
+			<span className='cart-item-num'>{cartItemNum}</span>
+		)
+	}
+
+
 
 	let shopLink
 	if (sessionUser) {
@@ -36,6 +62,7 @@ function Navigation({ isLoaded }) {
 				<NavLink to="/cart" style={{ textDecoration: 'none', color: "black" }}>
 					<div className='nav-buttons-cart'>
 						<i className="fas fa-shopping-cart" />
+						{cartItemNumDisplay}
 					</div>
 				</NavLink>
 			</div>

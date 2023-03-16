@@ -5,6 +5,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { clearCartState } from "../../store/cart";
 
 function ProfileButton({ user }) {
   const history = useHistory();
@@ -31,8 +32,9 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const handleLogout = (e) => {
+  const handleLogout = async (e) => {
     e.preventDefault();
+    await dispatch(clearCartState())
     dispatch(logout());
     history.push('/');
   };

@@ -5,8 +5,9 @@ import { useParams } from "react-router-dom";
 import './SingleProduct.css'
 import { clearState } from "../../store/products";
 import OpenModalButton from "../OpenModalButton";
-import { createCartItem } from "../../store/cart";
+import { createCartItem, fetchCartItems } from "../../store/cart";
 import Reviews from "../Reviews/reviews";
+import AddCartModal from "../AddCartModal";
 
 
 const SingleProduct = () => {
@@ -14,7 +15,7 @@ const SingleProduct = () => {
   const { productId } = useParams()
   const user = useSelector((state) => state.session.user)
   const product = useSelector(state => state.products.product)
-  // const user = useSelector(state => state.session.user)
+  const cart = useSelector(state => state.cart.cart)
   const [quantity, setQuantity] = useState(0)
 
 
@@ -23,11 +24,12 @@ const SingleProduct = () => {
     maxQuantity.push(i)
   }
 
-
   useEffect(() => {
     dispatch(fetchSingleProduct(productId))
     return () => dispatch(clearState())
   }, [dispatch, productId])
+
+  if (!product) return <h1>loading</h1>
 
   const onChangeHandler = (e) => {
     setQuantity(e.target.value)
@@ -36,6 +38,9 @@ const SingleProduct = () => {
   const addCartClick = async (e) => {
     e.preventDefault()
 
+    if (quantity === "Select Quantity") {
+      return
+    }
 
     const item_info = {
       user_id: user.id,
@@ -43,13 +48,45 @@ const SingleProduct = () => {
       quantity: Number(quantity)
     }
 
-    const newCartItem = await dispatch(createCartItem(item_info))
+    await dispatch(createCartItem(item_info))
+    await dispatch(fetchCartItems())
   }
 
+  // check if item is already in cart
+  let cartItemList = []
+  if(cart){
+    cartItemList = Object.values(cart)
 
-  if (!product) return <h1>loading</h1>
+  }
 
+  const itemNotInCart = () => {
+    for (let i = 0; i < cartItemList.length; i++) {
+      if (cartItemList[i].product_id === product.id) {
+        return false
+      }
+    }
+    return true
+  }
 
+  // disable button and buttonText functions
+  const disableBtn = () => {
+    if (!user) {
+      return true
+    }
+    return quantity > 0 && quantity !== "Select Quantity" && itemNotInCart() ? false : true
+  }
+
+  const btnText = () => {
+    if (!user) {
+      return "Please log in to add items cart"
+    }
+    if (user && !itemNotInCart()) {
+      return "Item already in cart"
+    } else {
+      return "Add to cart"
+    }
+
+  }
 
   return product && (
 
@@ -80,8 +117,18 @@ const SingleProduct = () => {
               )}
             </select>
             <div className="button-div">
-              <button className="buy-button">Buy it now</button>
-              <button onClick={addCartClick} className="add-cart-button">Add to Cart</button>
+              <button className="buy-button">Buy it now (Feature coming soon!!)</button>
+              <div className="add-cart-button-div" onClick={addCartClick}>
+                <OpenModalButton
+                  modalClass="add-cart-button"
+                  buttonText={btnText()}
+                  modalDisabled={disableBtn}
+                  modalComponent={
+                    <AddCartModal product={product} quantity={quantity} />
+                  }
+                />
+              </div>
+
             </div>
           </div>
         </div>

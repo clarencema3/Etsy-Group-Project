@@ -69,6 +69,39 @@ div[class*="nav-buttons-"] {
   background-color: lightgray;
 }
 
+.nav-buttons-cart {
+  width: 12px;
+  height: 12px;
+  position: relative;
+}
+
+.fa-shopping-cart {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  /* border: 1px solid red; */
+  z-index: 0;
+}
+
+.cart-item-num {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid orange;
+  background-color: orange;
+  border-radius: 8px;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  z-index: 1;
+  right: 0px;
+  bottom: 15px;
+  font-size: 10px;
+  font-weight: bold;
+  color: black;
+
+}
+
 .nav-buttons-cart:hover {
   background-color: lightgray;
 }

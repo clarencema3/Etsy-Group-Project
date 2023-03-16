@@ -3,6 +3,7 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
+import { fetchCartItems } from "../../store/cart";
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -17,12 +18,14 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
+      await dispatch(fetchCartItems())
       closeModal()
     }
   };
 
   const handleDemoClick = async () => {
     const data = await dispatch(login("demo@aa.io", "password"))
+    await dispatch(fetchCartItems())
     closeModal()
   }
 

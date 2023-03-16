@@ -1,51 +1,53 @@
 .purch-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .purch-card-container {
-    display: flex;
-    justify-content: center;
-    width: 900px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 900px;
 }
 
 .purch-card-div {
-    border: 3px solid gray;
-    border-radius: 10px;
-    box-shadow: 4px 4px 4px gray;
-    width: 700px;
-
+  border: 3px solid gray;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px gray;
+  width: 700px;
+  margin-bottom: 20px;
 }
 
 .purch-date-totalcost {
-    display: flex;
-    padding: 10px 10px 20px 10px;
-    justify-content: space-between;
-    border-bottom: 1px solid gray;
-    font-weight: bold;
+  display: flex;
+  padding: 10px 10px 20px 10px;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  font-weight: bold;
 }
 
 .purch-item-detail-card {
-    display: flex;
-    padding: 10px 0px;
+  display: flex;
+  padding: 10px 0px;
 }
 
 .purch-img {
-    width: 100px;
-    margin: 0px 10px;
-    border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  margin: 0px 10px;
+  border-radius: 10px;
 }
 
 .purch-name-cost-div {
-    display: flex;
-    /* border: 1px solid black; */
-    justify-content: space-between;
-    padding: 0px 10px;
-    width: 700px;
+  display: flex;
+  /* border: 1px solid black; */
+  justify-content: space-between;
+  padding: 0px 10px;
+  width: 700px;
 }
 
 .purch-qty-cost {
-    display: flex;
-    justify-content: space-between;
-    width: 125px;
+  display: flex;
+  justify-content: space-between;
+  width: 125px;
 }

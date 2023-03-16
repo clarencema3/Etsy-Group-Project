@@ -38,9 +38,9 @@ const Reviews = ({ product, user }) => {
         let rating
         if (review.rating === 1) {
           rating =
-            <span className="reviewStarsContainer">
+            <div className="reviewStarsContainer">
               <i className="fas fa-star" />
-            </span>
+            </div>
         }
         if (review.rating === 2) {
           rating =

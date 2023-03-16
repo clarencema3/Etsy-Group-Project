@@ -35,10 +35,10 @@ function NewProductForm() {
   // grab user id from state
   const user = useSelector((state) => state.session.user)
   if (!user) {
-    return null;
+    history.push('/')
   }
 
-  const userId = user.id
+  const userId = user?.id
   // console.log("user.id", user.id)
 
 

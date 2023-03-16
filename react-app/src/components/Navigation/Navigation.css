@@ -224,6 +224,7 @@ div[class*="nav-buttons-"] {
   font-weight: bold;
   border-radius: 3px;
   padding: 8px 8px;
+  cursor: pointer;
 }
 
 .login-sign-btn:hover {

@@ -56,7 +56,7 @@ const SingleProduct = () => {
 
   // check if item is already in cart
   let cartItemList = []
-  if(cart){
+  if (cart) {
     cartItemList = Object.values(cart)
 
   }
@@ -114,7 +114,7 @@ const SingleProduct = () => {
             <select className="select-quantity" onChange={onChangeHandler}>
               <option>Select Quantity</option>
               {maxQuantity.map(number => (
-                <option>{number}</option>
+                <option key={number}>{number}</option>
               )
               )}
             </select>

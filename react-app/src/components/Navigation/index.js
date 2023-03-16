@@ -11,7 +11,12 @@ function Navigation({ isLoaded }) {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		dispatch(fetchCartItems())
+		const checkUser = () => {
+			if(sessionUser){
+				dispatch(fetchCartItems())
+			}
+		}
+		checkUser()
 	}, [dispatch])
 
 	let cartArr = []

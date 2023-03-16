@@ -9,7 +9,7 @@ const EditReviewModal = ({ reviews, user, productId }) => {
   const dispatch = useDispatch()
   const userId = user?.id;
   const currentReview = reviews.find((review) => review?.user_id === userId);
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(currentReview?.rating);
   const [review, setReview] = useState(currentReview?.review);
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
@@ -51,15 +51,15 @@ const EditReviewModal = ({ reviews, user, productId }) => {
       </div>
       <div className="star__container">
         <div className="rate">
-          <input type="radio" id="star5" name="rate" value={rating} onClick={() => handleClick(5)} />
+          <input type="radio" id="star5" name="rate" value={rating} checked={rating == 5} onClick={() => handleClick(5)} />
           <label htmlFor="star5" title="text">5 stars</label>
-          <input type="radio" id="star4" name="rate" value={rating} onClick={() => handleClick(4)} />
+          <input type="radio" id="star4" name="rate" value={rating} checked={rating == 4} onClick={() => handleClick(4)} />
           <label htmlFor="star4" title="text">4 stars</label>
-          <input type="radio" id="star3" name="rate" value={rating} onClick={() => handleClick(3)} />
+          <input type="radio" id="star3" name="rate" value={rating} checked={rating == 3} onClick={() => handleClick(3)} />
           <label htmlFor="star3" title="text">3 stars</label>
-          <input type="radio" id="star2" name="rate" value={rating} onClick={() => handleClick(2)} />
+          <input type="radio" id="star2" name="rate" value={rating} checked={rating == 2} onClick={() => handleClick(2)} />
           <label htmlFor="star2" title="text">2 stars</label>
-          <input type="radio" id="star1" name="rate" value={rating} onClick={() => handleClick(1)} />
+          <input type="radio" id="star1" name="rate" value={rating} checked={rating == 1} onClick={() => handleClick(1)} />
           <label htmlFor="star1" title="text">1 star</label>
         </div>
       </div>

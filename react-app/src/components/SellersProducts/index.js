@@ -12,11 +12,6 @@ const SellersProducts = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user)
   const sellerProducts = useSelector(state => state.products.sellerProducts)
-  // const products = useSelector(state => state.products.products)
-  // console.log("products from sellers products", products)
-  // const sellersProduct = useSelector(state => state.products.products && Object.values(state.products.products).filter(productItem => {
-  //   return productItem.seller_id === user.id
-  // }))
 
   useEffect(() => {
     dispatch(fetchSellersProducts(user?.id))

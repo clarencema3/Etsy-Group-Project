@@ -27,7 +27,6 @@ function Orders() {
 
     const getTotalCost = (order) => {
         let total = 0
-        console.log("==============", order)
         for (let i = 0; i < order.length; i++) {
             total += order[i].total_price
         }

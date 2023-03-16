@@ -12,7 +12,7 @@ reviews_routes = Blueprint('reviews', __name__)
 @reviews_routes.route("/", methods=["POST"])
 def create_new_review():
     res = request.get_json()
-    print("\n\n\n\n res from the backend",res)
+
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
@@ -40,9 +40,8 @@ def delete_review(id):
 @reviews_routes.route("/<int:id>", methods=["PUT"])
 def edit_review(id):
     review = Review.query.get(id)
-    print("review in the back end \n\n\n\n\n", review.to_dict())
     res = request.get_json()
-    print('request from backend route \n\n\n\n\n' , res)
+
     if review:
        review.rating=res["rating"]
        review.review=res["review"]

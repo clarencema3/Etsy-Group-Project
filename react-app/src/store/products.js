@@ -117,7 +117,6 @@ export const deleteProduct = (productId) => async (dispatch) => {
 };
 
 export const editProduct = (product) => async (dispatch) => {
-  // console.log("edit product from reducer:", product)
   const response = await fetch(`/api/products/${product.id}`, {
     method: "put",
     headers: {

@@ -7,7 +7,6 @@ import './Reviews.css'
 
 const Reviews = ({ product, user }) => {
   const reviews = product?.reviews
-  console.log("reviews in reviews", reviews)
   const numberOfReviews = () => {
     if (reviews && reviews.length === 1) {
       return (

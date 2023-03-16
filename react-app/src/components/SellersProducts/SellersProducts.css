@@ -177,6 +177,38 @@
 
 
 /* edit product modal css */
+
+.editProductPriceAndStock {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.edit-product-inputs {
+  padding: 5px;
+  width: 100%;
+  border-radius: 15px;
+
+}
+
+.edit-product-textarea {
+  padding: 5px;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.editLabelForPrice {
+
+  width: 95%;
+  margin-left: 2.5%
+}
+
+.editLabelForStock {
+  width: 95%;
+  margin-right: 3.5%;
+
+}
+
 /* .edit-product-form {
   width: 65vw;
   height: 85vh;

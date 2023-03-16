@@ -50,6 +50,9 @@
 }
 
 .review-form {
+    /*width: 40vw;
+    height: 40vh;*/
+
     display: flex;
     justify-content: center;
     border-radius: 10px;

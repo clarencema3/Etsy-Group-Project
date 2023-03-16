@@ -4,6 +4,7 @@ export const GET_ALL_CART_ITEMS = "cart"
 export const ADD_CART_ITEM = "cart/ADD_ITEM"
 export const EDIT_CART_ITEM = "cart/EDIT_CART_ITEM"
 export const DELETE_CART_ITEM = "cart/DELETE_CART_ITEM"
+export const CLEAR_CART_STATE = "cart/CLEAR_CART_STATE"
 
 
 //action creators
@@ -32,6 +33,12 @@ export const removeCartItem = (item_info) => {
   return {
     type: DELETE_CART_ITEM,
     item_info
+  }
+}
+
+export const clearCartState = () => {
+  return {
+    type: CLEAR_CART_STATE
   }
 }
 
@@ -116,6 +123,10 @@ const cartReducer = (state = initialState, action) => {
     case DELETE_CART_ITEM:
       newState.cart = { ...state.cart }
       delete newState.cart[action.item_info.id]
+      return newState
+
+    case CLEAR_CART_STATE:
+      newState.cart = {}
       return newState
 
     default:

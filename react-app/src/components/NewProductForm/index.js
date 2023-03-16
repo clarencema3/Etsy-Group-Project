@@ -24,8 +24,8 @@ function NewProductForm() {
       const errors = {}
       if (isImage(previewImg) === false) errors.previewImg = 'Image URL must end in .png, .jpg, or .jpeg'
       if (!productName) errors.name = 'Product name is required'
-      if (!price || typeof Number(price) !== "number") errors.price = 'Price is required and should be a number'
-      if (!stock || typeof Number(stock) !== "number") errors.stock = 'Stock is required and should be a number'
+      if (!price || typeof Number(price) !== "number" || price < 1) errors.price = 'Price is required and should be a number'
+      if (!stock || typeof Number(stock) !== "number" || stock < 1) errors.stock = 'Stock is required and should be a number'
       if (!description) errors.description = 'Description is required'
       setValidations(errors)
     }

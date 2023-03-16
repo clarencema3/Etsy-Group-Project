@@ -152,3 +152,25 @@
 .delete-question {
   margin: 20px;
 }
+
+
+/* edit product modal css */
+.edit-product-form {
+  width: 65vw;
+  height: 85vh;
+}
+
+.edit-product-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-product-div {
+  width: 75%;
+}
+
+.edit-product-inputs {
+  width: 100%;
+}

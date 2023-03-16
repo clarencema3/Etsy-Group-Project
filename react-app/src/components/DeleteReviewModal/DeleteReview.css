@@ -1,32 +1,59 @@
 .delete-product_and_review-container {
-    width: 30vw;
+
+    /* width: 30vw;
     height: 25vh;
+    */
     display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 20px;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding-bottom: 8%;
+
 }
 
 .delete-product_and_review-button {
     margin-top: 10px;
     margin-bottom: 20px;
-    width: 70%;
+    width: 85%;
     padding: 10px;
     border: 2px solid black;
-    border-radius: 15px;
-    background-color: red;
+    border-radius: 20px;
+    background-color: black;
     color: white;
     cursor: pointer;
+    transition: transform 0.5s ease-out, background-color 0.5s ease-out, color 0.5s ease-out;
+}
+
+.delete-product_and_review-button:hover {
+    transform: scale(1.05);
+    background-color: rgb(230, 9, 9);
+    color: white;
 }
 
 .keep-product_and_review-button {
-    width: 70%;
+    width: 85%;
     padding: 10px;
     border: 2px solid black;
-    border-radius: 15px;
+    border-radius: 20px;
     cursor: pointer;
+    transition: transform 0.5s ease-out, background-color 0.5s ease-out, color 0.5s ease-out;
+}
+
+.keep-product_and_review-button:hover {
+    transform: scale(1.05);
+    background-color: white;
+    color: black;
 }
 
 .delete-question {
-    margin: 20px;
+    margin: 5px 20px 10px 20px;
+
 }
+
+.delete-product_and_review-container h2 {
+    padding-top: 5px;
+
+}
+

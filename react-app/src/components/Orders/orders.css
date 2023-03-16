@@ -11,9 +11,9 @@
 }
 
 .purch-card-div {
-  border: 3px solid gray;
+  border: 1px solid gray;
   border-radius: 10px;
-  box-shadow: 4px 4px 4px gray;
+  box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.2);
   width: 700px;
   margin-bottom: 20px;
 }

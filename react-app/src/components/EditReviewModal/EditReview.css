@@ -17,6 +17,12 @@
     padding: 0.7rem 1.5rem;
 }
 
+
+.disabled-button {
+    pointer-events: none;
+}
+
+
 .keep-review-btn {
     background-color: black;
     color: white;
@@ -24,3 +30,4 @@
     cursor: pointer;
     padding: 0.7rem 1.5rem;
 }
+

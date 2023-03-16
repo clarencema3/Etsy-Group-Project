@@ -71,6 +71,13 @@ p {
     box-shadow: 0px 0px 4px 3px rgba(202, 202, 202, 0.25);
     margin-bottom: 15px;
     padding: 0.66rem 0.5rem;
+    transition: transform 0.5s ease-out, background-color 0.5s ease-out, color 0.5s ease-out;
+}
+
+.product-seller-div .select-quantity:hover {
+    transform: scale(1.009);
+    /* background-color: rgb(240, 240, 240); */
+    /* color: rgb(157, 157, 157); */
 }
 
 .button-div {
@@ -100,6 +107,14 @@ p {
 
 .add-cart-button-div{
     width: 100%;
+    transition: transform 0.3s ease-out, background-color .3s ease-out, color .3s ease-out;
+}
+
+.add-cart-button:hover {
+    transform: scale(1.008);
+    background-color: #d7e6f5;
+    color: rgb(0, 0, 0);
+    /* box-shadow: inset 0 0 7px 3px #b9b9b9; */
 }
 
 .low-stock {
@@ -130,5 +145,8 @@ p {
     width: 35px;
     border-radius: 150px;
     margin: 20px 0;
+    object-fit: cover;
     /* margin: auto; */
 }
+
+.reviewEditAndDeleteButton {}

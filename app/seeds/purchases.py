@@ -23,6 +23,15 @@ def seed_purchases():
     )
 
     purchase3 = Purchase(
+        user_id=1,
+        product_id=5,
+        quantity=3,
+        order_id=2,
+        total_price=145.00,
+        date=datetime.now()
+    )
+
+    purchase4 = Purchase(
         user_id=2,
         product_id=5,
         quantity=3,
@@ -31,8 +40,9 @@ def seed_purchases():
         date=datetime.now()
     )
 
+
     db.session.add_all(
-        [purchase1, purchase2, purchase3]
+        [purchase1, purchase2, purchase3, purchase4]
     )
     db.session.commit()
 

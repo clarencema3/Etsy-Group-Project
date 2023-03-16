@@ -24,11 +24,11 @@ function LoginFormModal() {
   };
 
 
+
   const handleDemoClick = async () => {
     const data = await dispatch(login("demo@aa.io", "password"))
     await dispatch(fetchCartItems())
     closeModal()
-
   }
 
   return (

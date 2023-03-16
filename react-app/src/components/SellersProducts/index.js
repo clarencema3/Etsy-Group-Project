@@ -38,7 +38,7 @@ const SellersProducts = () => {
 
       <div className="sellerProductsPageContainer">
         <div className="sellersLogoContainer">
-          <img className="sellerImageLogo" src="https://i.etsystatic.com/25260451/r/il/402e7c/4387266595/il_794xN.4387266595_dh89.jpg" alt="logo" />
+          <img className="sellerImageLogo" src="https://www.pngfind.com/pngs/m/93-938050_png-file-transparent-white-user-icon-png-download.png" alt="logo" />
           <div className="sellersUserAndListingContainer">
             <strong>{user?.username}'s Store</strong>
             <NavLink className="makeAListing" to={"/products/new"}>+ Add a Product to your store</NavLink>
@@ -51,7 +51,7 @@ const SellersProducts = () => {
           <div>
             <NavLink to={`/products/${sellersProduct.id}`}>
               <div className="sellersProductCard " key={sellersProduct.id}>
-                <img src={sellersProduct.preview_img} alt='product'/>
+                <img src={sellersProduct.preview_img} alt='product' />
               </div>
             </NavLink>
 

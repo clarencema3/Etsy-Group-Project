@@ -52,7 +52,6 @@ const SingleProduct = () => {
 
     await dispatch(createCartItem(item_info))
     await dispatch(fetchCartItems())
-
   }
 
   // check if item is already in cart

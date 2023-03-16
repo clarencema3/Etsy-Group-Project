@@ -15,7 +15,7 @@ const Reviews = ({ product, user }) => {
       )
     } else if (reviews && reviews.length < 1) {
       return (
-        <div>
+        <div >
           Be the first to post a review!
         </div>
       )
@@ -38,20 +38,20 @@ const Reviews = ({ product, user }) => {
         let rating
         if (review.rating === 1) {
           rating =
-            <span><
-              i className="fas fa-star" />
-            </span>
+            <div className="reviewStarsContainer">
+              <i className="fas fa-star" />
+            </div>
         }
         if (review.rating === 2) {
           rating =
-            <div>
+            <div className="reviewStarsContainer">
               <i className="fas fa-star" />
               <i className="fas fa-star" />
             </div>
         }
         if (review.rating === 3) {
           rating =
-            <div>
+            <div className="reviewStarsContainer">
               <i className="fas fa-star" />
               <i className="fas fa-star" />
               <i className="fas fa-star" />
@@ -59,7 +59,7 @@ const Reviews = ({ product, user }) => {
         }
         if (review.rating === 4) {
           rating =
-            <div>
+            <div className="reviewStarsContainer">
               <i className="fas fa-star" />
               <i className="fas fa-star" />
               <i className="fas fa-star" />
@@ -68,7 +68,7 @@ const Reviews = ({ product, user }) => {
         }
         if (review.rating === 5) {
           rating =
-            <div>
+            <div className="reviewStarsContainer">
               <i className="fas fa-star" />
               <i className="fas fa-star" />
               <i className="fas fa-star" />
@@ -82,7 +82,10 @@ const Reviews = ({ product, user }) => {
             return (
               <>
                 <OpenModalButton
+
                   buttonText="Edit"
+                  modalClass="buyersProductEditButton"
+
                   modalComponent={
                     <EditReviewModal reviews={product.reviews} user={user} productId={product.id} />
                   } />
@@ -94,6 +97,7 @@ const Reviews = ({ product, user }) => {
             return (
               <>
                 <OpenModalButton
+                  modalClass="buyersProductRemoveButton"
                   buttonText="Delete"
                   modalComponent={
                     <DeleteReviewModal reviews={product?.reviews} user={user} productId={product?.id} />
@@ -104,15 +108,19 @@ const Reviews = ({ product, user }) => {
         return (
           <>
             {rating}
-            <div>{review.review}</div>
+            <div className="buyersReview">{review.review}</div>
             <div className="buyersLogoContainer">
-              <img className="buyersImageLogo" src="https://i.etsystatic.com/25260451/r/il/402e7c/4387266595/il_794xN.4387266595_dh89.jpg" alt="logo" />
+              <img className="buyersImageLogo" src="https://www.pngfind.com/pngs/m/93-938050_png-file-transparent-white-user-icon-png-download.png" alt="logo" />
               <div className="buyersUserAndListingContainer">
-                <strong>{review.owner_name}</strong>
+                <strong className="buyersUsername">{review.owner_name}</strong>
+
+                <div className="reviewEditAndDeleteButton">
+                  {editReviewButton()}
+                  {reviewDeleteButton()}
+
+                </div>
               </div>
             </div>
-            {editReviewButton()}
-            {reviewDeleteButton()}
           </>
         )
       })
@@ -123,7 +131,7 @@ const Reviews = ({ product, user }) => {
   const reviewButton = () => {
     if (user && user?.id !== product?.user?.id && user.id !== compareRev?.user_id) {
       return (
-        <div>
+        <div className="buyersPostReviewButton">
           <OpenModalButton
             buttonText={"Post Your Review!"}
             modalClass={"create-review"}
@@ -142,7 +150,7 @@ const Reviews = ({ product, user }) => {
       <div className="numberOfreviews">
         {numberOfReviews()}
       </div>
-      <br />
+
       {reviewButton()}
       <div className="buyersContainer">
         <div>

@@ -24,7 +24,7 @@ function Navigation({ isLoaded }) {
 				<NavLink exact to="/" style={{ textDecoration: 'none', color: "black" }}>Etsy</NavLink>
 			</div>
 			<div className='nav-search'>
-				<input className="nav-search-bar" type="search" placeholder='Search for anything' />
+				<input className="nav-search-bar" type="search" placeholder='Search feature coming soon' />
 			</div>
 			<div className='nav-buttons'>
 				{shopLink}

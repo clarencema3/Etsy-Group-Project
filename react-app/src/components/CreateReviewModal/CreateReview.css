@@ -50,15 +50,17 @@
 }
 
 .review-form {
-    width: 40vw;
-    height: 40vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    border-radius: 10px;
+    padding: 20px;
+    flex-direction: column;
     align-items: center;
+    padding-bottom: 8%;
 }
 
 .review-input-text {
     border: 2px solid black;
-    border-radius: 15px;
+    border-radius: 10px;
+    padding: 8px;
 }

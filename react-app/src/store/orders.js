@@ -29,7 +29,6 @@ export const fetchOrders = () => async (dispatch) => {
 
     if (response.ok) {
         const details = await response.json();
-        console.log(details)
         dispatch(getOrders(details))
     }
 };
@@ -38,7 +37,6 @@ export const createOrder = (cartItems) => async (dispatch) => {
 
     //loops through each item in cart and hits POST api for each
     // for (let item of cartItems) {
-        console.log("cartItems from inside THUNK", cartItems)
         const response = await fetch(`/api/orders/`, {
           method: "POST",
           headers: {
@@ -69,7 +67,6 @@ const ordersReducer = (state = initialState, action) => {
             return newState
 
         case ADD_PURCHASE:
-            console.log("action from inside REDUCER", action)
             // newState["purchases"] = {...action.orders}
             return newState
 

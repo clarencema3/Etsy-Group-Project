@@ -27,7 +27,6 @@ const Cart = () => {
       </div>
     );
   }
-  console.log("cartItems from inside component", cartItems)
 
   if (!cartItems) {
     return null
@@ -44,8 +43,6 @@ const Cart = () => {
   }
 
   const onChangeHandler = async (e, item) => {
-    // console.log("e from changeHanlder", e)
-    // console.log("item from inside ChangeHandler", item)
     const item_info = {
       id: item.id,
       user_id: user.id,
@@ -53,7 +50,6 @@ const Cart = () => {
       quantity: Number(e.target.value),
     };
 
-    console.log("item_info", item_info)
 
     await dispatch(editCartItem(item_info))
   };
@@ -70,7 +66,6 @@ const Cart = () => {
   }
 
   let cartItemsArr = Object.values(cartItems)
-  console.log("cartItemsArr", cartItemsArr)
 
   // calculates total quantity of items in cart
   function cartQuantity(cartArr) {
@@ -84,7 +79,6 @@ const Cart = () => {
 
   let totalQuant = cartQuantity(cartArr)
 
-  console.log("totalQuant", totalQuant);
 
   // calculates total price of all items in cart to display in summary box
   function cartTotal(cartArr) {
@@ -97,14 +91,12 @@ const Cart = () => {
   }
 
   let totalCartPrice = cartTotal(cartArr)
-  console.log("totalCartPrice", totalCartPrice)
 
   const purchaseClickHandler = async (e) => {
     e.preventDefault()
 
 
     let purchasedItems = await dispatch(createOrder(cartItemsArr))
-    console.log("purchasedItems from click handler return,", purchasedItems)
     if (purchasedItems) {
       for (let item of cartArr) {
         dispatch(deleteCartItem(item));

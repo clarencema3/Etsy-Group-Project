@@ -39,7 +39,6 @@ function NewProductForm() {
   }
 
   const userId = user?.id
-  // console.log("user.id", user.id)
 
 
   const handleSubmit = async (e) => {
@@ -63,7 +62,6 @@ function NewProductForm() {
       setValidations({})
 
       let createdProduct = await dispatch(addNewProduct(newProduct));
-      console.log('created product after dispatch', createdProduct)
       if (createdProduct) {
         history.push(`/`);
       }

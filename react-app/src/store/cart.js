@@ -94,7 +94,6 @@ export const deleteCartItem = (item_info) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json()
-    console.log("data from thunk ```````````````````````````", data)
     dispatch(removeCartItem(item_info));
   }
 }

@@ -34,7 +34,6 @@ const ShowAllProducts = () => {
         return <div>Loading...</div>
     }
     const productsArr = Object.values(products)
-    console.log("Products array from products:", productsArr)
     return productsArr && products && (
         <div className="allProductsContainer">
             {userLoggedIn()}

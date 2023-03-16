@@ -29,12 +29,22 @@
     padding: 15px 0;
 }
 
+.buyersProductEditButton:hover {
+    transform: scale(1.09);
+    font-size: 10pt;
+}
+
 .buyersProductEditButton {
     background-color: transparent;
     border: transparent;
     text-decoration-line: underline;
     cursor: pointer;
+    transition: transform 0.5s ease-out, font-size 0.5s ease-out;
+}
 
+.buyersProductRemoveButton:hover {
+    transform: scale(1.09);
+    font-size: 10pt;
 }
 
 .buyersProductRemoveButton {
@@ -43,6 +53,7 @@
     text-decoration-line: underline;
     cursor: pointer;
     margin-left: 3px;
+    transition: transform 0.5s ease-out, font-size 0.5s ease-out;
 }
 
 .buyersUsername {

@@ -50,13 +50,13 @@ const ShowAllProducts = () => {
             <section className="whatIsEtsyContainer">
                 <div className="inner">
                     <h2>
-                        What is Etsy?
+                        What is Petsy?
                     </h2>
                     <h3>
                         Support independent creators
                     </h3>
                     <p>
-                        There’s no Etsy warehouse – just millions of people selling the things they love. We make the whole process easy, helping you connect directly with makers to find something extraordinary.
+                        There’s no Petsy warehouse – just millions of people selling the things they love. We make the whole process easy, helping you connect directly with makers to find something extraordinary.
                     </p>
                     <div><strong>
                         Have a question? Well, we’ve got some answers.

@@ -47,7 +47,7 @@ function Navigation({ isLoaded }) {
 	return (
 		<div className='nav-container white-space'>
 			<div className='nav-home'>
-				<NavLink exact to="/" style={{ textDecoration: 'none', color: "black" }}>Etsy</NavLink>
+				<NavLink exact to="/" style={{ textDecoration: 'none', color: "orange" }}>Petsy</NavLink>
 			</div>
 			<div className='nav-search'>
 				<input className="nav-search-bar" type="search" placeholder='Search feature coming soon' />

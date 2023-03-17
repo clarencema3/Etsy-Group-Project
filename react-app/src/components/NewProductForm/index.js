@@ -142,7 +142,7 @@ function NewProductForm() {
           <p>Preview Image *</p>
           {submitted && validations.previewImg && (<p className='create__product__error'>{validations.previewImg}</p>)}
           <input
-            type="text"
+            type="url"
             name="previewImg"
             value={previewImg}
             placeholder="Preview Img"

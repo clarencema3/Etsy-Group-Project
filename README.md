@@ -36,15 +36,14 @@ Hi Welcome to Petsy, our clone of Etsy built by [Sean Baeyens](https://www.linke
 
 ## Technologies & Libraries Used:
 
-React
-Redux
-AWS
-Javascript
-Python
-SQLAlchemy
-WTForms
-Font Awesome
-
+- React
+- Redux
+- AWS
+- Javascript
+- Python
+- SQLAlchemy
+- WTForms
+- Font Awesome
 
 ## Future Implementations
 

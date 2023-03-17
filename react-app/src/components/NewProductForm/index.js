@@ -50,7 +50,7 @@ function NewProductForm() {
       const newProduct = {
         "product_name": productName,
         "description": description,
-        "price": price,
+        "price": Number(price).toFixed(2),
         "seller_id": userId,
         "stock": Number(stock),
         "preview_img": previewImg

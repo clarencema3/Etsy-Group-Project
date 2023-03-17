@@ -49,7 +49,7 @@ const EditProductModal = ({ id }) => {
       const editedData = {
         "product_name": productName,
         "description": description,
-        "price": price,
+        "price": Number(price).toFixed(2),
         "seller_id": userId,
         "stock": Number(stock),
         "id": currentProduct.id,

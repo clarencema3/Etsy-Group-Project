@@ -3,7 +3,7 @@
 Hi Welcome to Petsy, our clone of Etsy built by [Sean Baeyens](https://www.linkedin.com/in/sean-baeyens/), [Clarence Ma](https://github.com/clarencema3), [Anton Do](https://www.linkedin.com/in/anton-do/), and [Jordan Blancaflor](https://www.linkedin.com/in/jordan-blancaflor-a4577584/)
 
 ## Overview & Functionality:
-**Note: You can log in using the Demo User to experience all of the sites features.
+**Note: You can log in using the Demo User to experience all of the sites features.**
 
 ### Account Signup and login:
 **Note: You can log in using the Demo User to experience all of the sites features.
@@ -45,5 +45,8 @@ Hi Welcome to Petsy, our clone of Etsy built by [Sean Baeyens](https://www.linke
 - WTForms
 - Font Awesome
 
-## Future Implementations
-
+## Future Implementations (Future features to add that were cut from V1 scope)
+- After a purchase is made the stock of an item should decrement by the appropriate amount.
+- Search functionality.
+- Adding a shipping and payment feature.
+- Addition of product categories for easier browsing.

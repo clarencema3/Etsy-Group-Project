@@ -52,7 +52,7 @@ function NewProductForm() {
         "description": description,
         "price": price,
         "seller_id": userId,
-        "stock": stock,
+        "stock": Number(stock),
         "preview_img": previewImg
       };
 

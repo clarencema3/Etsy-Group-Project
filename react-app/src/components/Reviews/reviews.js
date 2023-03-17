@@ -24,7 +24,7 @@ const Reviews = ({ product, user }) => {
       )
     }
   }
-
+  console.log("~~~~~~~~~", product, ">>>>>>>>>>>>>>>", user)
   const compareRev = reviews?.find(review => review?.user_id === user?.id)
 
   const showReviews = () => {
@@ -141,7 +141,10 @@ const Reviews = ({ product, user }) => {
 
         </div>
       )
+    } else if (user && user?.id === product?.user?.id) {
+      return <p>You cannot review your own item</p>
     }
+
   }
 
   return (
@@ -153,35 +156,6 @@ const Reviews = ({ product, user }) => {
       {reviewButton()}
       <div className="buyersContainer">
         <div>
-          {/* {reviews?.map(review => (
-            <>
-              {showReviews()}
-              <div>{review.review}</div>
-              <div className="buyersLogoContainer">
-                <img className="buyersImageLogo" src="https://i.etsystatic.com/25260451/r/il/402e7c/4387266595/il_794xN.4387266595_dh89.jpg" alt="logo" />
-                <div className="buyersUserAndListingContainer">
-                  <strong>{review.owner_name}</strong>
-                </div>
-              </div>
-              {user.id === review.user_id ?
-                <div> */}
-          {/* <OpenModalButton
-                    buttonText="Edit"
-                    modalComponent={
-                      <EditReviewModal reviews={product.reviews} user={user} productId={product.id} />
-                    } /> */}
-          {/* <OpenModalButton
-                    buttonText="Delete"
-                    modalComponent={
-                      <DeleteReviewModal reviews={product.reviews} user={user} productId={product.id} />
-                    } /> */}
-          {/* {showReviews()}
-                </div>
-                : null}
-              <div>
-              </div>
-            </>
-          ))} */}
           {showReviews()}
         </div>
       </div>

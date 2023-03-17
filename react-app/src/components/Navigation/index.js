@@ -12,7 +12,7 @@ function Navigation({ isLoaded }) {
 
 	useEffect(() => {
 		const checkUser = () => {
-			if(sessionUser){
+			if (sessionUser) {
 				dispatch(fetchCartItems())
 			}
 		}
@@ -55,7 +55,7 @@ function Navigation({ isLoaded }) {
 				<NavLink exact to="/" style={{ textDecoration: 'none', color: "orange" }}>Petsy</NavLink>
 			</div>
 			<div className='nav-search'>
-				<input className="nav-search-bar" type="search" placeholder='Search feature coming soon' />
+				<input className="nav-search-bar" type="search" placeholder='Search feature coming soon' readOnly />
 			</div>
 			<div className='nav-buttons'>
 				{shopLink}

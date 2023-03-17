@@ -91,7 +91,7 @@ p {
     background-color: white;
     border: 2px solid black;
     border-radius: 20px;
-    cursor: pointer;
+    cursor: not-allowed;
     padding: 0.7rem 1.5rem;
 }
 

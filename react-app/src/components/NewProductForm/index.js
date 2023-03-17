@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import './NewProductForm.css'
 import { addNewProduct } from "../../store/products";
 import { useDispatch, useSelector } from "react-redux";
+import validator from 'validator'
 
 function NewProductForm() {
   const history = useHistory();

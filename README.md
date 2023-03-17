@@ -6,7 +6,7 @@ Hi Welcome to Petsy, our clone of Etsy built by [Sean Baeyens](https://www.linke
 - [Redux Store](https://github.com/clarencema3/Etsy-Group-Project/wiki#example-redux-state)
 - [Backend Routes](https://github.com/clarencema3/Etsy-Group-Project/wiki/Backend-Routes)
 - [Frontend Routes](https://github.com/clarencema3/Etsy-Group-Project/wiki/Frontend-Route)
-- [User Stories] (https://github.com/clarencema3/Etsy-Group-Project/wiki/User-Stories)
+- [User Stories](https://github.com/clarencema3/Etsy-Group-Project/wiki/User-Stories)
 
 ## Overview & Functionality:
 **Note: You can log in using the Demo User to experience all of the sites features.**

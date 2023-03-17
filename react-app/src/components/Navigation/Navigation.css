@@ -161,6 +161,7 @@ div[class*="nav-buttons-"] {
   width: 100px;
   padding: 2px 0px;
   border-radius: 5px;
+  cursor: not-allowed;
 }
 
 .profile-dropdown-user:hover {

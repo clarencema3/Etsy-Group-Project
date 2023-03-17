@@ -48,6 +48,11 @@
   object-fit: cover;
 }
 
+.sellersProductCardDiv {
+  width: 250px;
+  height: 250px;
+}
+
 .sellersProductNameEditRemove {
   display: flex;
   justify-content: space-between;

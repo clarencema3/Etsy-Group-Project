@@ -54,7 +54,7 @@ function ProfileButton({ user }) {
             <div className="profile-dropdown-div">
               <div className="profile-dropdown-user">
                 <i className="fas fa-user" />
-                <span className="profile-dropdown-name">{user.username}</span>
+                <span onClick={() => alert("Profile feature coming soon")} className="profile-dropdown-name">{user.username}</span>
               </div>
               <NavLink to="/orders" style={{ textDecoration: 'none', color: "black" }}>
                 <div className="profile-dropdown-purchases">

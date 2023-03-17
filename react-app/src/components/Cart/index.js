@@ -177,7 +177,7 @@ const Cart = () => {
             <div className="payment-options">
               <p>How you'll pay</p>
               <div>
-                <input type="radio" value="Visa" name="paymentMethod" /> Visa
+                <input type="radio" value="Visa" name="paymentMethod" checked /> Visa
               </div>
               <div>
                 <input type="radio" value="PayPal" name="paymentMethod" />{" "}

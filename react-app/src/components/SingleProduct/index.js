@@ -18,7 +18,8 @@ const SingleProduct = () => {
   const user = useSelector((state) => state.session.user)
   const product = useSelector(state => state.products.product)
   const cart = useSelector(state => state.cart.cart)
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState("Select Quantity")
+  const [error, setError] = useState(false)
 
 
   const maxQuantity = [];
@@ -31,18 +32,25 @@ const SingleProduct = () => {
     return () => dispatch(clearState())
   }, [dispatch, productId])
 
+  useEffect(() => {
+    if (quantity === "Select Quantity") {
+      setError(true)
+    } else {
+      setError(false)
+    }
+
+  }, [error, quantity])
+
   if (!product) return <h1>loading</h1>
 
   const onChangeHandler = (e) => {
     setQuantity(e.target.value)
   }
 
+  //on click handler
   const addCartClick = async (e) => {
     e.preventDefault()
 
-    if (quantity === "Select Quantity") {
-      return
-    }
 
     const item_info = {
       user_id: user.id,
@@ -112,9 +120,9 @@ const SingleProduct = () => {
             <p>Total Stock: {product.stock}</p>
             <p>Quantity</p>
             <select className="select-quantity" onChange={onChangeHandler}>
-              <option>Select Quantity</option>
+              <option value="Select Quantity">Select Quantity</option>
               {maxQuantity.map(number => (
-                <option key={number}>{number}</option>
+                <option value={number} key={number}>{number}</option>
               )
               )}
             </select>
@@ -129,6 +137,7 @@ const SingleProduct = () => {
                     <AddCartModal product={product} quantity={quantity} />
                   }
                 />
+                {error ? <p className="error-text-quantity">Please select a quantity</p> : ""}
               </div>
 
             </div>

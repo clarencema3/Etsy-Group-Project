@@ -43,7 +43,7 @@ const SellersProducts = () => {
 
       <div className="sellersProductCardsContainer">
         {sellerProductsArr.map(sellersProduct => (
-          <div>
+          <div className="sellersProductCardDiv">
             <NavLink to={`/products/${sellersProduct.id}`}>
               <div className="sellersProductCard " key={sellersProduct.id}>
                 <img src={sellersProduct.preview_img} alt='product' />

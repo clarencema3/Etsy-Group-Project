@@ -24,7 +24,7 @@ const Reviews = ({ product, user }) => {
       )
     }
   }
-  console.log("~~~~~~~~~", product, ">>>>>>>>>>>>>>>", user)
+
   const compareRev = reviews?.find(review => review?.user_id === user?.id)
 
   const showReviews = () => {

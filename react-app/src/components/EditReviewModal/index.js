@@ -24,6 +24,7 @@ const EditReviewModal = ({ reviews, user, productId }) => {
   const handleClick = (value) => {
     setRating(value)
   }
+
   const confirm = async (e) => {
     e.preventDefault()
 
@@ -40,6 +41,9 @@ const EditReviewModal = ({ reviews, user, productId }) => {
     <form className="review-form">
       <h2>Edit your review</h2>
       <p>Are you sure you want to edit this review?</p>
+      {errors.map(error => (
+        <p className="review-error-display">{error}</p>
+      ))}
       <div className="review-text-div">
         <textarea
           className="review-input-text"

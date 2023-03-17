@@ -33,6 +33,7 @@ const ShowAllProducts = () => {
     if (!products) {
         return <div>Loading...</div>
     }
+
     const productsArr = Object.values(products)
     return productsArr && products && (
         <div className="allProductsContainer">
@@ -67,6 +68,61 @@ const ShowAllProducts = () => {
                     </div>
                 </div>
             </section>
+            <footer className="creator-links">
+                <div className="footer-header">Developer Contact Information:</div>
+                <div className="github-div">
+                    <div>
+                        <i class="fab fa-github" />
+                        <span className="creator-names">
+                            <a href="https://github.com/AntonHDo">Anton Do</a>
+                        </span>
+                    </div>
+                    <div>
+                        <i class="fab fa-github" />
+                        <span className="creator-names">
+                            <a href="https://github.com/clarencema3">Clarence Ma</a>
+                        </span>
+                    </div>
+                    <div>
+                        <i class="fab fa-github" />
+                        <span className="creator-names">
+                            <a href="https://github.com/Jblancs">Jordan Blancaflor</a>
+                        </span>
+                    </div>
+                    <div>
+                        <i class="fab fa-github" />
+                        <span className="creator-names">
+                            <a href="https://github.com/sbaeyens">Sean Baeyens</a>
+                        </span>
+                    </div>
+                </div>
+                <div className="linkedin-div">
+                    <div>
+                        <i class="fab fa-linkedin" />
+                        <span className="creator-names">
+                            <a href="https://www.linkedin.com/in/anton-do/">Anton Do</a>
+                        </span>
+                    </div>
+                    <div>
+                        <i class="fab fa-linkedin" />
+                        <span className="creator-names">
+                            <a href="https://www.linkedin.com/in/clarence-ma-93bb45258/">Clarence Ma</a>
+                        </span>
+                    </div>
+                    <div>
+                        <i class="fab fa-linkedin" />
+                        <span className="creator-names">
+                            <a href="https://www.linkedin.com/in/jordan-blancaflor-a4577584/">Jordan Blancaflor</a>
+                        </span>
+                    </div>
+                    <div>
+                        <i class="fab fa-linkedin" />
+                        <span className="creator-names">
+                            <a href="https://www.linkedin.com/in/sean-baeyens/">Sean Baeyens</a>
+                        </span>
+                    </div>
+                </div>
+            </footer>
         </div>
     )
 }

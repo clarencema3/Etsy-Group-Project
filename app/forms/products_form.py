@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, FloatField, TextAreaField
-from wtforms.validators import DataRequired
+from wtforms import StringField, IntegerField, FloatField, TextAreaField,URLField
+from wtforms.validators import DataRequired, URL
 
 
 class ProductForm(FlaskForm):

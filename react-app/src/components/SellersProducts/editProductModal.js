@@ -51,7 +51,7 @@ const EditProductModal = ({ id }) => {
         "description": description,
         "price": price,
         "seller_id": userId,
-        "stock": stock,
+        "stock": Number(stock),
         "id": currentProduct.id,
         "preview_img": previewImg
       };

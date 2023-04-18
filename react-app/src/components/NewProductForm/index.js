@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import './NewProductForm.css'
 import { addNewProduct } from "../../store/products";
 import { useDispatch, useSelector } from "react-redux";
-import validator from 'validator'
+// import validator from 'validator'
 
 function NewProductForm() {
   const history = useHistory();
@@ -13,25 +13,7 @@ function NewProductForm() {
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
   const [previewImg, setPreviewImg] = useState("");
-  const [validations, setValidations] = useState({});
-  const [submitted, setSubmitted] = useState(false);
-
-  function isImage(url) {
-    return /(.*)(\.png|.jpg|.jpeg)/.test(url);
-  }
-
-  useEffect(() => {
-    const validate = () => {
-      const errors = {}
-      if (isImage(previewImg) === false) errors.previewImg = 'Image URL must end in .png, .jpg, or .jpeg'
-      if (!productName) errors.name = 'Product name is required'
-      if (!price || isNaN(price) || price < 1) errors.price = 'Price is required and should be a number'
-      if (!stock || isNaN(stock) || !Number.isInteger(+stock) || stock < 1) errors.stock = 'Stock is required and should be a number'
-      if (!description) errors.description = 'Description is required'
-      setValidations(errors)
-    }
-    validate()
-  }, [previewImg, productName, price, stock, description])
+  const [validations, setValidations] = useState([]);
 
 
   // grab user id from state
@@ -45,39 +27,40 @@ function NewProductForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true)
-    if (!Object.values(validations).length) {
-      const newProduct = {
-        "product_name": productName,
-        "description": description,
-        "price": Number(price).toFixed(2),
-        "seller_id": userId,
-        "stock": Number(stock),
-        "preview_img": previewImg
-      };
+    const formData = new FormData()
+    formData.append("product_name", productName);
+    formData.append("description", description);
+    formData.append("price", Number(price).toFixed(2));
+    formData.append("seller_id", userId);
+    formData.append("stock", Number(stock));
+    formData.append("preview_img", previewImg);
 
-      setProductName('')
-      setDescription('')
-      setPrice('')
-      setStock('')
-      setPreviewImg('')
-      setValidations({})
-
-      let createdProduct = await dispatch(addNewProduct(newProduct));
-      if (createdProduct) {
-        history.push(`/`);
-      }
+    let data = await dispatch(addNewProduct(formData));
+    if (data) {
+        setValidations(data)
+    } else {
+        history.push('/')
     }
+
   }
 
+
   return (
-    <form className="create-form" onSubmit={handleSubmit}>
+    <form
+      className="create-form"
+      onSubmit={handleSubmit}
+      encType="multipart/form-data"
+    >
       <div className="form-contents">
         <div className="form-section">
           <h2>Product Details</h2>
           <p>Tell the world all about your item and why they'll love it.</p>
+          <ul>
+              {validations && validations.map((error, idx) => (
+                  <li key={idx} className="create__product__error">{error}</li>
+              ))}
+          </ul>
           <p>Product Name *</p>
-          {submitted && validations.name && (<p className='create__product__error'>{validations.name}</p>)}
           <input
             type="text"
             name="productName"
@@ -88,7 +71,6 @@ function NewProductForm() {
           />
           <label for="description">
             <p>Description *</p>
-            {submitted && validations.description && (<p className='create__product__error'>{validations.description}</p>)}
             <textarea
               name="description"
               id="description"
@@ -96,9 +78,9 @@ function NewProductForm() {
               rows="10"
               placeholder="Description"
               className="form-input"
+              value={description}
               onChange={(e) => setDescription(e.target.value)}
             >
-              {description}
             </textarea>
           </label>
         </div>
@@ -110,7 +92,6 @@ function NewProductForm() {
           </p>
           <label>
             <p>Price *</p>
-            {submitted && validations.price && (<p className='create__product__error'>{validations.price}</p>)}
             <input
               type="text"
               name="price"
@@ -122,7 +103,6 @@ function NewProductForm() {
           </label>
           <label>
             <p>Stock *</p>
-            {submitted && validations.stock && (<p className='create__product__error'>{validations.stock}</p>)}
             <input
               type="text"
               name="stock"
@@ -135,19 +115,16 @@ function NewProductForm() {
         </div>
         <h2>Photos</h2>
         <p>
-          Choose 1 Preview Photo to represent your image. You can add
-          additional images to your listing later.
+          Choose 1 Preview Photo to represent your image. You can add additional
+          images to your listing later.
         </p>
         <label>
           <p>Preview Image *</p>
-          {submitted && validations.previewImg && (<p className='create__product__error'>{validations.previewImg}</p>)}
           <input
-            type="url"
-            name="previewImg"
-            value={previewImg}
-            placeholder="Preview Img"
+            type="file"
             className="form-input"
-            onChange={(e) => setPreviewImg(e.target.value)}
+            accept="image/*"
+            onChange={(e) => setPreviewImg(e.target.files[0])}
           />
         </label>
         <div className="form-button-div">

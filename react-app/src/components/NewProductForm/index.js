@@ -122,7 +122,6 @@ function NewProductForm() {
           <p>Preview Image *</p>
           <input
             type="file"
-            name="previewImg"
             className="form-input"
             accept="image/*"
             onChange={(e) => setPreviewImg(e.target.files[0])}

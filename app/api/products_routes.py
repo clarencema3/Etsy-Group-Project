@@ -36,17 +36,16 @@ def get_single_product(id):
 
 @products_routes.route("/", methods=["POST"])
 def create_new_product():
-    res = request.get_json()
-
     form = ProductForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
+
     if form.validate_on_submit():
         preview_img = form.data['preview_img']
         preview_img.filename = get_unique_filename(preview_img.filename)
         upload = upload_file_to_s3(preview_img)
-        # if "url" not in upload:
-        #     errors['photo'] = 'Error in uploading your photo'
-        #     return jsonify({ 'errors': errors }), 400
+        if "url" not in upload:
+            errors['photo'] = 'Error in uploading your photo'
+            return jsonify({ 'errors': errors }), 400
         product = Product(
             product_name=form.data["product_name"],
             description=form.data["description"],

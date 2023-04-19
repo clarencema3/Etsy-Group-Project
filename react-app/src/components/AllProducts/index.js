@@ -42,7 +42,7 @@ const ShowAllProducts = () => {
                 {productsArr?.map((product) => (
 
                     <NavLink to={`/products/${product.id}`} className="productCard" key={product.id}>
-                        <img src={product.preview_img} alt="product" />
+                        <img className='product-img' src={product.preview_img} alt="product" />
                         <div className="productPrice">${Number(product.price).toFixed(2)}</div>
                     </NavLink>
 

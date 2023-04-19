@@ -1,3 +1,8 @@
+.reviewsContainer{
+    /* border: 1px solid black; */
+    width: 1200px;
+}
+
 .create-review {
     height: auto;
     background-color: white;
@@ -27,6 +32,7 @@
 
 .reviewStarsContainer {
     padding: 15px 0;
+
 }
 
 .buyersProductEditButton:hover {

@@ -20,7 +20,7 @@
   display: flex;
   justify-content: space-between;
   height: 40px;
-  align-items: center;
+  /* align-items: center; */
   margin-top: 1%;
 }
 
@@ -110,22 +110,6 @@ div[class*="nav-buttons-"] {
   background-color: lightgray;
 }
 
-.nav-search {
-  display: flex;
-  justify-content: center;
-  /* width: 75%; */
-  /* Trying to get rid of white space between -anton */
-  width: 100%;
-}
-
-.nav-search-bar {
-  border-radius: 15px;
-  padding: 15px;
-  height: 30px;
-  /* width: 95%; */
-  /* Trying to get rid of white space between -anton */
-  width: 100%;
-}
 
 .nav-home {
   font-size: 30px;
@@ -229,5 +213,51 @@ div[class*="nav-buttons-"] {
 }
 
 .login-sign-btn:hover {
+  background-color: lightgray;
+}
+
+/* search ------------------------------------- */
+.nav-search {
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+  /* width: 75%; */
+  /* Trying to get rid of white space between -anton */
+  row-gap: 5px;
+  /* height: 500px; */
+  width: 100%;
+}
+
+.nav-search-bar {
+  border-radius: 15px;
+  border: 2px solid black;
+  padding: 15px;
+  height: 5px;
+  position: relative;
+  /* width: 95%; */
+  /* Trying to get rid of white space between -anton */
+  width: 95%;
+}
+
+.search-dropdown {
+  position: relative;
+  z-index: 1;
+  background-color: white;
+  /* border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray; */
+  padding: 10px;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+  width: 97%;
+  min-width: 300px;
+}
+
+.search-results {
+  cursor: pointer;
+  display: flex;
+}
+
+.search-results:hover{
   background-color: lightgray;
 }

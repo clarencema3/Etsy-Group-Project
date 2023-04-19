@@ -101,50 +101,50 @@ const SingleProduct = () => {
   return product && (
 
     <div className="page-container">
-      <div className="product-div white-space">
-        <div className="product-image-div">
-          <img src={product.preview_img} className='product-image' alt='product'></img>
-        </div>
-        <div className="product-details-div">
-          <div className="product-details">
-            {product.stock <= 5 ? <strong className="low-stock">Only {product.stock} left</strong> : ""}
-            <p className="price-of-product">${Number(product.price).toFixed(2)}</p>
-            <strong className="product-label">Product Name:</strong>
-            <p>{product.product_name}</p>
-            <strong className="product-label">Product Description:</strong>
-            <p>{product.description}</p>
+        <div className="product-div white-space">
+          <div className="product-image-div">
+            <img src={product.preview_img} className='product-image' alt='product'></img>
           </div>
-          <div className="product-seller-div">
-            <p>Seller's Name: {product.user?.username}</p>
-            {/* <p>Rating</p> */}
-            <p>Total Stock: {product.stock}</p>
-            <p>Quantity</p>
-            <select className="select-quantity" onChange={onChangeHandler}>
-              <option value="Select Quantity">Select Quantity</option>
-              {maxQuantity.map(number => (
-                <option value={number} key={number}>{number}</option>
-              )
-              )}
-            </select>
-            <div className="button-div">
-              <button className="buy-button">Buy it now (Feature coming soon!!)</button>
-              <div className="add-cart-button-div" onClick={addCartClick}>
-                <OpenModalButton
-                  modalClass="add-cart-button"
-                  buttonText={btnText()}
-                  modalDisabled={disableBtn}
-                  modalComponent={
-                    <AddCartModal product={product} quantity={quantity} />
-                  }
-                />
-                {error ? <p className="error-text-quantity">Please select a quantity</p> : ""}
-              </div>
+          <div className="product-details-div">
+            <div className="product-details">
+              {product.stock <= 5 ? <strong className="low-stock">Only {product.stock} left</strong> : ""}
+              <p className="price-of-product">${Number(product.price).toFixed(2)}</p>
+              <strong className="product-label">Product Name:</strong>
+              <p>{product.product_name}</p>
+              <strong className="product-label">Product Description:</strong>
+              <p>{product.description}</p>
+            </div>
+            <div className="product-seller-div">
+              <p>Seller's Name: {product.user?.username}</p>
+              {/* <p>Rating</p> */}
+              <p>Total Stock: {product.stock}</p>
+              <p>Quantity</p>
+              <select className="select-quantity" onChange={onChangeHandler}>
+                <option value="Select Quantity">Select Quantity</option>
+                {maxQuantity.map(number => (
+                  <option value={number} key={number}>{number}</option>
+                )
+                )}
+              </select>
+              <div className="button-div">
+                <button className="buy-button">Buy it now (Feature coming soon!!)</button>
+                <div className="add-cart-button-div" onClick={addCartClick}>
+                  <OpenModalButton
+                    modalClass="add-cart-button"
+                    buttonText={btnText()}
+                    modalDisabled={disableBtn}
+                    modalComponent={
+                      <AddCartModal product={product} quantity={quantity} />
+                    }
+                  />
+                  {error ? <p className="error-text-quantity">Please select a quantity</p> : ""}
+                </div>
 
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <Reviews product={product} user={user} />
+        <Reviews product={product} user={user} />
     </div>
   )
 }

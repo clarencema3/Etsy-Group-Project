@@ -3,6 +3,7 @@ from app.models import User, db, Product, Review
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from app.forms import ProductForm
+from app.forms import ImageForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.api.aws_helpers import get_unique_filename, upload_file_to_s3
 
@@ -70,6 +71,25 @@ def delete_a_product(id):
         return {"Response": f"Successfully deleted item."}
 
 
+@products_routes.route("/image/<int:id>", methods=["PUT"])
+def edit_product_image(id):
+    product = Product.query.get(id)
+    form = ImageForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        preview_img = form.data['preview_img']
+        preview_img.filename = get_unique_filename(preview_img.filename)
+        upload = upload_file_to_s3(preview_img)
+        if "url" not in upload:
+            errors['preview_img'] = 'Error in uploading your photo'
+            return jsonify({ 'errors': errors }), 400
+        product.preview_img = upload["url"]
+        db.session.commit()
+        return product.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
 @products_routes.route("/<int:id>", methods=["PUT"])
 def edit_a_product(id):
     product = Product.query.get(id)
@@ -79,6 +99,8 @@ def edit_a_product(id):
         product.description = res["description"]
         product.price = res["price"]
         product.stock = res["stock"]
-        product.preview_img = res["preview_img"]
         db.session.commit()
         return product.to_dict()
+
+
+

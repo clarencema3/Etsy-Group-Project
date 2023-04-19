@@ -6,6 +6,7 @@ import OpenModalButton from "../OpenModalButton";
 import "./SellersProducts.css"
 import DeleteProductModal from "./deleteProductModal";
 import EditProductModal from "./editProductModal";
+import EditImage from "./editImageModal";
 
 const SellersProducts = () => {
   const history = useHistory();
@@ -44,12 +45,19 @@ const SellersProducts = () => {
       <div className="sellersProductCardsContainer">
         {sellerProductsArr.map(sellersProduct => (
           <div className="sellersProductCardDiv">
-            <NavLink to={`/products/${sellersProduct.id}`}>
-              <div className="sellersProductCard " key={sellersProduct.id}>
-                <img src={sellersProduct.preview_img} alt='product' />
+           
+              <div className="sellersProductCard " key={sellersProduct.id} onClick={() => history.push(`/products/${sellersProduct.id}`)}>
+                <NavLink to={`/products/${sellersProduct.id}`}>
+                  <img className='product-img' src={sellersProduct.preview_img} alt='product' />
+                </NavLink>
+                <OpenModalButton
+                buttonText={<i className="fas fa-camera" />}
+                modalClass='edit-product-img'
+                modalComponent={
+                  <EditImage product={sellersProduct} />
+                }
+                />
               </div>
-            </NavLink>
-
             <div className="sellersProductNameEditRemove">
               <div className="sellers-product-name">
                 {sellersProduct.product_name}

@@ -45,7 +45,7 @@ const SellersProducts = () => {
       <div className="sellersProductCardsContainer">
         {sellerProductsArr.map(sellersProduct => (
           <div className="sellersProductCardDiv">
-           
+
               <div className="sellersProductCard " key={sellersProduct.id} onClick={() => history.push(`/products/${sellersProduct.id}`)}>
                 <NavLink to={`/products/${sellersProduct.id}`}>
                   <img className='product-img' src={sellersProduct.preview_img} alt='product' />
@@ -53,6 +53,7 @@ const SellersProducts = () => {
                 <OpenModalButton
                 buttonText={<i className="fas fa-camera" />}
                 modalClass='edit-product-img'
+                stopProp={true}
                 modalComponent={
                   <EditImage product={sellersProduct} />
                 }

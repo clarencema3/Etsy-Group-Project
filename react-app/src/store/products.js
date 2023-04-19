@@ -134,6 +134,19 @@ export const editProduct = (product) => async (dispatch) => {
   }
 };
 
+//aws image edit thunk -- don't set content type
+export const updatePhoto = (productId, image) => async (dispatch) => {
+  const response = await fetch(`/api/products/image/${productId}`, {
+      method: "PUT",
+      body: image
+  })
+
+  if (response.ok) {
+      const product = await response.json()
+      dispatch(updateProduct(product))
+  }
+}
+
 const initialState = {};
 
 //reducer

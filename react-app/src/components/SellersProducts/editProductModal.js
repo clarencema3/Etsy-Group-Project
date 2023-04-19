@@ -136,25 +136,6 @@ const EditProductModal = ({ id }) => {
             {submitted && validations.stock && (<p className='create__product__error'>{validations.stock}</p>)}
           </label>
         </div>
-        <div className="edit-product-div">
-          <h2>Photos</h2>
-          <p>
-            Choose 1 Preview Photo to represent your image. You can add
-            additional images to your listing later.
-          </p>
-          <label>
-            <p>Preview Image*</p>
-            <input
-              type="text"
-              name="previewImg"
-              className="edit-product-inputs"
-              value={previewImg}
-              placeholder="Preview Img"
-              onChange={(e) => setPreviewImg(e.target.value)}
-            />
-            {submitted && validations.previewImg && (<p className='create__product__error'>{validations.previewImg}</p>)}
-          </label>
-        </div>
         <br />
         <button className="submit-form-btn">Edit Listing</button>
       </div>

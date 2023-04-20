@@ -33,9 +33,11 @@
 
 .purch-img {
   width: 100px;
-  height: 100px;
+  height: 120px;
   margin: 0px 10px;
   border-radius: 10px;
+  object-fit: cover;
+  object-position: top center;
 }
 
 .purch-name-cost-div {

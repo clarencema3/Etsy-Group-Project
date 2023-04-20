@@ -26,10 +26,19 @@ def seed_products():
         "https://i.etsystatic.com/23323937/r/il/0b151b/3815740025/il_794xN.3815740025_1f6u.jpg",
         "https://i.etsystatic.com/23323937/r/il/bc0048/3768147842/il_794xN.3768147842_e0zl.jpg",
     ]
+
+    nameList = [
+        'Pet Portrait',
+        'Animal Portrait',
+        'Gift Portrait',
+        'Friend Portrait',
+        'Custom Portrait',
+    ]
+
     productList = []
     for idx, link in enumerate(imgList):
         product = Product(
-            product_name=f'Pet Portrait',
+            product_name=nameList[random.randint(0,4)],
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
             price=15.05+idx,
             seller_id=random.randint(1,2),

@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchOrders } from "../../store/orders";
+import React from "react";
 import Orders from "../Orders"
 import "./SuccessfulPurchasePage.css";
 

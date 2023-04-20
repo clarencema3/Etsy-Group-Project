@@ -2,11 +2,15 @@ import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { fetchProducts } from "../../store/products";
+
 import "./AllProducts.css"
+
+
 const ShowAllProducts = () => {
     const dispatch = useDispatch()
     const products = useSelector(state => state.products.products)
     const user = useSelector((state) => state.session.user)
+    
 
     const userLoggedIn = () => {
         if (user) {

@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { editCartItem, fetchCartItems, deleteCartItem } from "../../store/cart";
 import { createOrder } from "../../store/orders";
 import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "../SignupFormModal";
 import "./Cart.css"
 
 const Cart = () => {
@@ -112,7 +111,7 @@ const Cart = () => {
     return (
       <div className="center-container">
         <h2>{totalQuant} items in your cart</h2>
-        <img src="https://i.pinimg.com/originals/2e/ac/fa/2eacfa305d7715bdcd86bb4956209038.png" />
+        <img src="https://i.pinimg.com/originals/2e/ac/fa/2eacfa305d7715bdcd86bb4956209038.png" alt='empty-cart'/>
       </div>
     );
   }
